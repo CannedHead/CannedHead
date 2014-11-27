@@ -350,7 +350,7 @@ html(lang='en')
             
 
             var texto="update"+tablename+": function(req, res, next){\n pool.getConnection(function(err, connection) {\n";
-            var query =  '  var query =  "UPDATE '+tablename+' (';
+            var query =  '  var query =  "UPDATE '+tablename+' SET ';
             var values ="";
 
             var table = document.getElementById("dataTable");
@@ -358,16 +358,14 @@ html(lang='en')
             var rowCount = table.rows.length;     
             for(var i=2; i<rowCount; i++) {
                 var row = table.rows[i];
-                values=values+'"+connection.escape(req.body.'+row.cells[1].innerHTML+')+"';
-                query=query+row.cells[1].innerHTML;
+                query=query+row.cells[1].innerHTML+'="+connection.escape(req.body.'+row.cells[1].innerHTML+')+"';
+                
 
                 if(i==rowCount-1){
-                    query=query+") VALUES (";
-                    values=values+');";\n\n';
+                    query=query+';";\n\n';
                     
                 } else {                  
-                    query=query+", ";
-                    values=values+", ";
+                    query=query+",";
                 }
                 
             }
