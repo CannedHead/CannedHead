@@ -3,42 +3,29 @@ html(lang="en")
   head
     meta(charset="utf-8")        
     meta(property="og:type" content="website")
-    meta(property="og:title" content="")
-    meta(property="og:image" content="https://s3.amazonaws.com/cannedhead.temp/cannedhead.png")
+    meta(property="og:title" content="AYUDAMOS COMPAÑÍAS A REINVENTAR SU NEGOCIO!")
+    meta(property="og:image" content="")
     meta(property="og:description" content="")
     meta(property="og:url" content="http://www.cannedhead.com")
     meta(content="" name="author")
     meta(content="width=device-width, initial-scale=1" name="viewport")   
-   
-    title CannedHead
+    meta(name ="description" content="Diseñamos y desarrollamos estrategias personalizadas para implementar nuevas interacciones y tecnologías robustas en las diferentes etapas de la experiencia del cliente en tu empresa.")
+    title Creacion de paginas web, desarrollo aplicaciones móviles y experiencias digitales, Bogota. Canned Head
 
     link(href="/img/16x16.png" rel="shortcut icon" type="image/png")  
     link(href="/css/bootstrap.css", rel="stylesheet")
-    link(href="css/bootstrap.min.css", rel="stylesheet")
     link(href="/css/style.css", rel="stylesheet")
-    link(href="/css/component.css", rel="stylesheet")
-    link(href="/css/set2.css", rel="stylesheet")
+
+
 
     <!-- jQuery & jQuery UI-->
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
-    script(src="/js/jquery.sticky.js")
-    <!-- Bootstrap JS -->
-    script(src="/js/bootstrap.min.js")
-    <!-- Other JS -->
-    script(src="/js/scroll.js")
-    script(src="/js/jarallax-0.2.2.js")
-    script(src="/js/smoothscroll.js")
-    script(src="/js/modernizr.custom.js")
+    script(src="/js/main.min.js")
+ 
+
+
      
 
-
-    script.
-      init = function() {
-        
-        var jarallax = new Jarallax(); 
-        jarallax.addAnimation('.apost',[{progress:'0%',top:'50%'},{progress: '100%',top: '0%'}]);                                    
-        
-      }
 
  
 
@@ -46,33 +33,92 @@ html(lang="en")
   body(onLoad='init()')
     block content
 
+    
+     
+
+
+
     footer.footer.footerCan
       .container
         .col-sm-12
           a(href="#").squareArrow.pull-right.scrollup
             img.arrow(src="img/arrow.svg")
         .col-sm-12.footerCont     
-          .col-sm-4.col-sm-offset-1
-            img.col-md-7.pull-right(src="img/logo.svg" style="opacity:0.5;")
-          .col-sm-6
-            .col-md-12
-              .col-md-12.footerSocial
-                
-            .col-md-12.footerTip
-              .col-md-12
-                p.nText RECIBE TIPS, RECURSOS Y NOTICIAS
-              .col-md-4
-                input.inputFooter(type="email" name="email" placeholder="Ingresa tu e-mail" required)
-              .col-md-4.col-md-offset-1
-                input.btnFooter(type="submit", value="SUSCRIBIRME") 
+            img.img-responsive.logoFooter(src="img/logo.svg")
+            .pull-right.tip
+              p.nText RECIBE TIPS, RECURSOS Y NOTICIAS
+              input.inputFooter(type="email" name="email" placeholder="Ingresa tu e-mail" required)
+              input.btnFooter(type="submit", value="SUSCRIBIRME") 
 
 
 
         .col-sm-12.footerCopy(style='text-align:center; color:#fff;')        
-          p(style='opacity:0.2;').copyright &copy; 2014 CannedHead Todos los derechos reservados.
-
-  
+          p(style='opacity:0.2;').copyright &copy; 2015 CannedHead Todos los derechos reservados.
     
+ 
+
+  script.
+    jQuery(document).ready(function() {
+      jQuery('.fadeInDown').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated fadeInDown',
+        offset: 100
+       });
+
+      jQuery('.fadeIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated fadeIn',
+        offset: 100
+       });
+
+      jQuery('.bounceLeft').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInLeft',
+        offset: 100
+       });
+
+      jQuery('.bounceRight').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInRight',
+        offset: 100
+       });
+
+      jQuery('.bounceUp').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInUp',
+        offset: 100
+       });
+
+      jQuery('.pulse').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated pulse',
+        offset: 100
+       });
+
+       jQuery('.zoomIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated zoomIn',
+        offset: 100
+       });
+
+       jQuery('.fadeInRight').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated FadeInRight',
+        offset: 100
+       });
+
+       jQuery('.fadeInLeft').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated FadeInLeft',
+        offset: 100
+       });
+
+       jQuery('.flipInY').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated flipInY',
+        offset: 100
+       });
+
+       jQuery('.shake').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated shake',
+        offset: 100
+       });
+
+       jQuery('.rotateIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated rotateIn',
+        offset: 100
+       });
+    }); 
 
 
       

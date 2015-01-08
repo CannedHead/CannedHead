@@ -39,8 +39,8 @@ app.post('/landing',function(req, res) {
 });
 
 
-app.get('/portfolio', function(req, res) {
-	res.render('portfolio'); 
+app.get('/resources', function(req, res) {
+	res.render('resources/resources'); 
 });
 
 app.get('/contact', function(req, res) {
