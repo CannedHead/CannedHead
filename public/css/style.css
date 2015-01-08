@@ -251,7 +251,7 @@ section {
 
 
 /*--------------------------------------------------------------------------------------
-OFF CANVAS LEFT
+MENU MOBILE OFF CANVAS LEFT
   -------------------------------------------------------------------------------------*/
 
 .menuMobile{
@@ -270,9 +270,6 @@ border-bottom: solid 4px #F90042;
   width:auto;
 }
 
-
-
-
 .menu-wrap nav a {
   color: #B0B0B0;
   font-size: 1em !important; 
@@ -288,7 +285,6 @@ border-bottom: solid 4px #F90042;
   color: #333;
   font-size: 1em !important; 
 }
-
 
 /* Menu Button */
 .menu-button {
@@ -312,9 +308,6 @@ border-bottom: solid 4px #F90042;
   border: none;
   background: transparent;
 }
-
-
-
 
 .menu-button::before {
   position: absolute;
@@ -576,9 +569,10 @@ text-align: justify;
 
 .introHero{
   font-family: "novaextrabold"; 
-  font-size: 3.8em; 
+  font-size: 2.5em; 
   color: #fff; 
 }
+
 .porqueBtn{
 
 margin-top: 4%; 
@@ -587,12 +581,18 @@ margin-top: 4%;
 
 
 
-/*--------------------------  END Section#1 home -----------------------------*/
+/*--------------------------  END HOME Section#1 home -----------------------------*/
 
 
 
 
-/*--------------------------  BEGIN Section#2 WHY -----------------------------*/
+
+
+
+
+
+
+/*--------------------------  BEGIN HOME Section#2 WHY -----------------------------*/
 
 .why{
    
@@ -608,9 +608,6 @@ margin-top: 4%;
   font-family: 'novabold'; 
   color: #fff; 
 }
-
-
-
 
 .contText3{
   font-family: 'novaregular'; 
@@ -639,7 +636,7 @@ margin-top: 4%;
 .contTitle3{
   font-family: 'novablack'; 
   color: #222;
-  font-size: 5em !important;  
+  font-size: 4.5em !important;  
 }
 
 .contTitle5{
@@ -648,15 +645,16 @@ margin-top: 4%;
   font-size: 3em !important;  
 }
 
-
-
-/*--------------------------  END Section#2 WHY -----------------------------*/
-
+/*--------------------------  END HOME Section#2 WHY -----------------------------*/
 
 
 
 
-/*--------------------------  BEGIN Section#3 Services -----------------------------*/
+
+
+
+
+/*--------------------------  BEGIN HOME Section#3 Services -----------------------------*/
 
 .column1{
   height: 50%; 
@@ -684,7 +682,7 @@ margin-top: 4%;
 .contTitle6{
   font-family: 'novablack'; 
   color: #fff;
-  font-size: 5em; 
+  font-size: 4.5em; 
   margin-top: 0px !important;  
   letter-spacing: 3px; 
 }
@@ -725,7 +723,7 @@ font-size: 0.8em;
   z-index: 4; 
   position: absolute;
   font-size: 6em; 
-  margin-top: 33%;
+  margin-top: 25%;
   text-align: center;
   color: #fff;
   opacity: 0.8;
@@ -745,9 +743,7 @@ font-size: 0.8em;
  -webkit-transition: opacity 2.95s ;
 }
 
-
-
-/* Services EFEECT========================*/
+/* ==================================Services IMAGEEFEECT ========================*/
 .grid {
   position: relative;
   max-width: 1000px;
@@ -771,7 +767,7 @@ font-size: 0.8em;
   position: relative;
   display: block;
   opacity: 0.8;
-  height: 110% !important;
+  height: 112% !important;
 }
 
 .grid figure figcaption {
@@ -968,19 +964,30 @@ figure.effect-julia:hover span img {
   -webkit-transition: opacity .55s ;
 }
 
-
-
-
-
 /*--------------------------  END Section#3 Services -----------------------------*/
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*--------------------------  BEGIN Section#4 Clients -----------------------------*/
-
-
 
 .columnC2{
   height: 100%; 
@@ -992,16 +999,14 @@ figure.effect-julia:hover span img {
 .columnC2 p{
   font-family: 'novaregular'; 
   color: #fff; 
-  font-size: 1.1em; 
+  font-size: 1em; 
   opacity: 0.8; 
 }
-
-  
 
 .columnC1{
   height: 100%;
   background-color: #333;
-  background-image: url("/img/clients.png") !important;
+  background-image: url("http://s5.postimg.org/hkjfpfy1j/clients.jpg") !important;
   background-size: auto 100%; 
   background-position: 60%; 
   z-index: 3; 
@@ -1012,8 +1017,6 @@ box-shadow: -17px 1px 19px -5px rgba(0,0,0,0.15);
   padding-right: 0px !important; 
 
 }
-
-
 
 .client{
   float: left; 
@@ -1038,7 +1041,7 @@ box-shadow: -17px 1px 19px -5px rgba(0,0,0,0.15);
 .clienteTitle{
   height: 15%;
   background-color: #fff;
-  padding-top: 1%; 
+  padding-top: 0.2%; 
   padding-left: 3%; 
   text-align: left;
   z-index: 5;  
@@ -1097,6 +1100,8 @@ color: #8C1C1C !important;
 
 
 
+
+
 /*--------------------------  BEGIN Section#5 Contact  -----------------------------*/
 
 .columnCon{
@@ -1107,25 +1112,18 @@ color: #8C1C1C !important;
   background-image: url("http://s5.postimg.org/6i9kr40lz/contact2.png");
   background-size: auto 100%;
   background-position: 92%;  
-
-  
-
 }
 
 .columnCon2{
   height: 100%;
   background-color: #fff; 
   z-index: 4; 
-  padding: 4% 30%; 
-
-
+  padding: 3% 30%; 
 }
 
 .contactHero{
   margin-top: 45%;
 }
-
-
 
 .columnSocial2{
   height: 100%;
@@ -1140,7 +1138,7 @@ color: #8C1C1C !important;
 }
 
 .letsContact{
-  width: 400px; 
+  width: 250px; 
 }
 
 
@@ -1175,12 +1173,11 @@ color: #8C1C1C !important;
   border: solid 4px #797979; 
 }
 
-
 .boton{
   width: 50%; 
   height: 45px; 
   font-family: 'novabold'; 
-  background-color: #D5D5D5;
+  background-color: #D13638;
   color: #fff; 
   border-radius: 0px !important; 
   letter-spacing: 2px !important; 
@@ -1189,31 +1186,12 @@ color: #8C1C1C !important;
   transition: background-color 0.4s ease-in-out 0s, box-shadow 0.4s ease-in-out 0s; 
 }
 
-
 .boton:hover{
-  background-color: #D13638; 
+  background-color:#222; 
   color: #fff; 
   opacity: 1; 
 }
 
-
-.socialIconBar{
-  height: 100%; 
-  width: 100%;
-  opacity: 0.9; 
-
-}
-
-.socialIconBar2{
-  height: 22px; 
-  width: 22px;
-  margin-top: 7%;
-
-  
-}
-
-.socialIconBar2:hover{ 
-}
 
 .contactText{
   font-family: 'novaregular'; 
@@ -1222,6 +1200,9 @@ color: #8C1C1C !important;
 }
 
 /*--------------------------  END  Section#4 Contact  -----------------------------*/
+
+
+
 
 
 
@@ -1244,7 +1225,6 @@ color: #8C1C1C !important;
 }
 
 .footerCont{
-
 padding: 1% 25%;
 }
 
@@ -1349,9 +1329,7 @@ opacity: 1;
 
 
 
-/*-------------------------- 
-Preloader
-  -----------------------------*/
+/*--------------------------  Preloader     -----------------------------*/
 
 .logoLoader{
 margin-left: 4%;
@@ -1410,53 +1388,15 @@ margin-top: 5%;
 
 
 
+/*------------------------------------------------------------------------------------
+
+
+                                MEDIA Q
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*--------------------------  Media queries -----------------------------*/
+-------------------------------------------------------------------------------------*/
 
 /*-------------------------- 
 1824PX  
@@ -1471,8 +1411,34 @@ margin-top: 5%;
   opacity: 0.5; 
 }
 
+.introHero{
+  font-size: 3.8em; 
+}
+
+.contTitle6{
+  font-size: 5em; 
+}
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*-------------------------- 
 1024PX  
@@ -1487,8 +1453,9 @@ margin-top: 5%;
     margin-top: -50px; 
 
 }
-   /*_______________________________________
-  Section 1  */
+
+
+/* -----------Section 1-------------------  */
 
   #video-container{
     -webkit-background-size:cover;
@@ -1496,35 +1463,22 @@ margin-top: 5%;
     -o-background-size:cover;
     background-size:cover
   }
-
-
-
   
   #video-container img,#video-container video{
     display:none
   }
 
+  .logoIntro{
+    margin-top: 35%; 
+  }
 
-.logoIntro{
+  .introHero{
+    font-size: 2.5em; 
+  }
 
-  margin-top: 35%; 
-}
-
-
-.introHero{
-
-  font-size: 2.5em; 
-}
-
-
-
-.introText{
-
-letter-spacing: 0.5px !important;
-}
-
-
-
+  .introText{
+    letter-spacing: 0.5px !important;
+  }
 
   .menuCanned{
     display: none;
@@ -1534,30 +1488,33 @@ letter-spacing: 0.5px !important;
     display:block; 
   }
 
-.contTitle3{
 
-  font-size: 4em !important;  
-}
+/* -----------Section 2-------------------  */
 
 
+  .contTitle3{
+    font-size: 4em !important;  
+  }
+
+/* -----------Section 3-------------------  */
 
 .grid figure h5{
   display:block; 
   font-family: 'novabold';
-
 }
 
 .forja{
   width: 100%;
-
 }
 
+
+/* -----------Section 5-------------------  */
 #screen5{
 
 height: auto; 
 }
 
-
+/* -----------Footer-------------------  */
 .footerCont{
 
 padding: 1% 20%;
@@ -1567,31 +1524,60 @@ padding: 1% 20%;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*-------------------------- 
 990PX  
  -----------------------------*/
+
+
 @media screen and (max-width :990px){
- .contTitle3{
 
-  font-size: 3em !important;  
-}
- .contTitle5{
-
-  font-size: 2.5em !important;  
-}
-
+ /* -----------Section 0 home-------------------  */
   #screen1{
     height: auto; 
   }
 
+
+/* -----------Section 2-------------------  */
+ .contTitle3{
+    font-size: 3em !important;  
+  }
+
+ .contTitle5{
+    font-size: 2.5em !important;  
+  }
+
+/* ----------- Footer -------------------  */
 .footerCont{
+  padding: 1% 12%;
+}
 
-padding: 1% 12%;
 }
 
 
 
-}
+
+
+
+
+
+
+
+
+
 
 
 /*-------------------------- 
@@ -1599,8 +1585,8 @@ padding: 1% 12%;
  -----------------------------*/
 @media screen and (max-width :768px){
 
-   /*_______________________________________
-  Section 1  */
+
+/* -----------Section 1-------------------  */
   .porqueBtn{
     margin-bottom: 5%; 
   }
@@ -1618,6 +1604,7 @@ padding: 1% 12%;
     background-position: -440px;
   }
 
+/* -----------Section 2-------------------  */
   .contTitle3{
 
   font-size: 3em !important;  
@@ -1627,8 +1614,8 @@ padding: 1% 12%;
 
   font-size: 2.5em !important;  
 }
- /*_______________________________________
-  Section 3  */
+
+/* -----------Section 3-------------------  */
 
 
   #screen3{
@@ -1655,8 +1642,8 @@ padding: 1% 12%;
 }
 
 
- /*_______________________________________
-  Section 4  */
+
+/* -----------Section 4-------------------  */
 
 #screen4{
   height:auto }
@@ -1677,43 +1664,61 @@ padding: 1% 12%;
 padding: 5% 15%;
 }
 
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*-------------------------- 
 580PX  
  -----------------------------*/
 @media screen and (max-width :600px){
 
 
-  /*_______________________________________
-  Section 1  */
+ /* -----------Section 1-------------------  */
 
-
-
-   .logoIntro{
+ .logoIntro{
     height:130px;
     margin-top: 12%;  
   }
 
-
   .introText{
-
     font-size: 1em;
   }
 
   .contTitle3{
-
-  font-size: 2em !important;  
-}
+    font-size: 2em !important;  
+  }
 
   .contTitle5{
+    font-size: 1.5em !important;  
+  }
 
-  font-size: 1.5em !important;  
-}
-
-  /*_______________________________________
-  Section 1 why  */
+ /* -----------Section 2-------------------  */
 
   #screen2{
     height: auto; 
@@ -1723,17 +1728,17 @@ padding: 5% 15%;
   .imageService h1{
     font-size: 1.5em; 
     margin-top: 25%; 
-
   }
 
   .imageService{
     height: 844px; 
   }
 
-.iconoServicio{
-  margin-left: 41%; 
-}
+  .iconoServicio{
+    margin-left: 41%; 
+  }
 
+/* ----------- Footer -------------------  */
 .logoFooter{
   float: center;
   display: block;
@@ -1741,30 +1746,36 @@ padding: 5% 15%;
   margin-left: auto;
 }
 
-
 .tip{
   float: none !important;
   display: block;
- margin-right: auto;
+  margin-right: auto;
   margin-left: auto;
-
 }
 
 .inputFooter{
   width: 60%; 
 }
+
 .footerCont{
-
-padding: 5% 5%;
+  padding: 5% 5%;
 }
 
 }
+
+
+
+
+
+
+
+
 
 /*-------------------------- 
 480PX  
  -----------------------------*/
 @media screen and (max-width :480px){
-
+/* -----------Section 1-------------------  */
   #screen1{
     height: auto; 
 
@@ -1776,78 +1787,69 @@ padding: 5% 5%;
   }
 
 
-.introHero{
+  .introHero{
 
-  font-size: 1.4em; 
-}
+    font-size: 1.4em; 
+  }
 
-.introText{
+  .introText{
 
-letter-spacing: 0.1px !important;
-}
+  letter-spacing: 0.1px !important;
+  }
+
+
+/* -----------Section 2-------------------  */
 
 .contTitle{
   margin-top: -26% !important;
 }
 
-  .contTitle3{
-
+.contTitle3{
   font-size: 3em !important;  
 }
 
-  .contTitle5{
-
+.contTitle5{
   font-size: 2em !important;  
 }
-
-
-  
 
 .porque{
   font-size: 0.5em !important;
 }
-
- /*_______________________________________
-  Section 1 why _______________________  */
-
-  .imageService2{
-    width: 100%; 
-    padding-top: 15%;
-  }
+.imageService2{
+  width: 100%; 
+  padding-top: 15%;
+}
 
 .imageService{
-    width: 100%; 
-  }
+  width: 100%; 
+}
 
-  .imageService{
-    height: 300px; 
-  }
+.imageService{
+  height: 300px; 
+}
 
+.column2{
+  height: 380px; 
+}
 
-  .column2{
-    height: 380px; 
-  }
-
-
-  .iconoServicio{
+.iconoServicio{
   margin-left: 33%; 
 }
+
+/* -----------Section 3-------------------  */
 
 .forja{
   font-size: 1.2em; 
 }
 
-
-
 .contTitle6{
-
   font-size: 3em; 
-
 }
 
 .columnC1{
   height: 260px; 
 }
+
 .client{
   height: auto; 
 }
@@ -1857,22 +1859,35 @@ letter-spacing: 0.1px !important;
 }
 
 
-
+/* ----------- Footer -------------------  */
 
 .footerCont{
-
-padding: 15% 5%;
+  padding: 15% 5%;
 }
 
 .inputFooter{
   width: 90%;
   margin-bottom: 7%;  
 }
+
 .btnFooter{
-margin-left: 0%;
+  margin-left: 0%;
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*-------------------------- 
 320PX
@@ -1880,6 +1895,7 @@ margin-left: 0%;
 
 @media screen and (max-width :320px){
 
+/* -----------Section 1-------------------  */
   #screen1{
     height: auto; 
 
@@ -1894,6 +1910,7 @@ margin-left: 0%;
     height: 150%; 
   }
 
+/* -----------Section 2-------------------  */
 .porque{
   font-size: 0.5em !important;
 }

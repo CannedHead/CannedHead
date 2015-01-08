@@ -159,7 +159,7 @@ block content
        
           p.contText.forja2 Ellos han confiado en nosotros!! 
           br
-          p "Escogí Canned para diseñar mi pagina web corporativa, fueron profesionales de principio a fin. Muchas Gracias"
+          p "Escogí Canned para diseñar mi página web corporativa, fueron profesionales de principio a fin. Muchas Gracias"
           p.pull-right - Argeda Services & Solutions          
           br
           br
@@ -192,12 +192,12 @@ block content
     section#screen5
 
       .col-sm-12.columnCon2
-            img.img-responsive.letsContact.center-block(src="img/letswork2.svg" alt="trabajo digital")  
+            img.img-responsive.letsContact.center-block(src="http://s5.postimg.org/vpp8r972v/letswork2.png" alt="trabajo digital")  
             br
+      
+            p.contactText Si tienes curiosidad y quieres escuchar más de nuestros servicios, no dudes en hacer contacto. Las mejores relaciones se construyen hablando cara a cara. Y nosotros estamos dispuestos a hacerlo :)  
             br
-            p.contactText Si tienes curiosidad y quieres escuchar mas de nuestros servicios, no dudes en hacer contacto. Las mejores relaciones se construyen hablando cara a cara. Y nosotros estamos dispuestos a hacerlo :)  
-            br
-            br
+          
             form(action="/landing", method="post")              
                 .form-group
                   input.fieldContact(type="text", name="user", placeholder="Nombre" required)             
@@ -207,10 +207,13 @@ block content
                   textarea.fieldContact.textArea(name="message" placeholder="Mensaje" required)
     
                 .form-group.shake
-                  input.boton(type="submit", value="ENVIAR")
+                  input.boton(type="submit", value="CONTÁCTANOS")
 
-    
-        
+
+
+
+
+
 
     script(src="/js/classie.js")
     script.
@@ -224,41 +227,9 @@ block content
               
           });
 
-
-
-
-
-
-
-
-
       video_count =1;
       videoPlayer = document.getElementById("video");
-      
-
-      
-      videoPlayer.addEventListener('timeupdate', function() {
-      var progressTime = videoPlayer.currentTime/videoPlayer.duration;
-      
-      progressTime = progressTime * 100;
-      progressTime = Math.floor(progressTime);
-   
-
-
-
-           if(progressTime > 80){
-           faded(); 
-              
-           }
-   
-      });
-
-
-      function faded(){
-  
-      $("video").fadeOut(1000,function(){
-            });
-      }
+    
 
       function run(){
               corre=true;
@@ -271,16 +242,14 @@ block content
                  
          }
 
-
-
-
-
+    script.
       $(document).ready(function(){
        $("#sticky").sticky({topSpacing:0});
 
       });
 
     
+    script.
       function sizeVideo(e){
           if(typeof e=="undefined"){
               e=getDocumentRatio()

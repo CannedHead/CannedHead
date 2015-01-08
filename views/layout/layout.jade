@@ -12,16 +12,21 @@ html(lang="en")
     meta(name ="description" content="Diseñamos y desarrollamos estrategias personalizadas para implementar nuevas interacciones y tecnologías robustas en las diferentes etapas de la experiencia del cliente en tu empresa.")
     title Creacion de paginas web, desarrollo aplicaciones móviles y experiencias digitales, Bogota. Canned Head
 
-    link(href="/img/16x16.png" rel="shortcut icon" type="image/png")  
+    <!-- FAVICON -->
+    link(href="http://s5.postimg.org/e9v2pk843/16x16.png" rel="shortcut icon" type="image/png") 
+
+    <!-- CSS --> 
     link(href="/css/bootstrap.css", rel="stylesheet")
     link(href="/css/style.css", rel="stylesheet")
 
-
-
     <!-- jQuery & jQuery UI-->
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
-    script(src="/js/main.min.js")
- 
+    script(src="/js/viewportchecker.js")
+    script(src="/js/jquery.sticky.js")
+    script(src="/js/scroll.js")
+    script(src="/js/smoothscroll.js")
+    script(src="/js/modernizr.custom.js")
+    script(src="/js/fakeLoader.js")
 
 
      
@@ -33,29 +38,24 @@ html(lang="en")
   body(onLoad='init()')
     block content
 
-    
-     
-
-
-
     footer.footer.footerCan
       .container
         .col-sm-12
           a(href="#").squareArrow.pull-right.scrollup
-            img.arrow(src="img/arrow.svg")
+            img.arrow(src="http://s5.postimg.org/vbnwrnmz7/arrow.png")
         .col-sm-12.footerCont     
-            img.img-responsive.logoFooter(src="img/logo.svg")
+            img.img-responsive.logoFooter(src="http://s5.postimg.org/awx9hu6mv/logo.png")
             .pull-right.tip
               p.nText RECIBE TIPS, RECURSOS Y NOTICIAS
               input.inputFooter(type="email" name="email" placeholder="Ingresa tu e-mail" required)
               input.btnFooter(type="submit", value="SUSCRIBIRME") 
 
-
-
         .col-sm-12.footerCopy(style='text-align:center; color:#fff;')        
           p(style='opacity:0.2;').copyright &copy; 2015 CannedHead Todos los derechos reservados.
     
- 
+
+
+
 
   script.
     jQuery(document).ready(function() {
