@@ -1,7 +1,7 @@
 {
   "name" : "cannedhead",
   "version" : "0.0.1",
-  "author": "Juan David Florez <jd.florez39@gmail.com>",
+  "author": "CannedHead <contact@cannedhead.com>",
   "description": "cannedhead",
   "repository" :{
     "type" : "git",
@@ -15,7 +15,8 @@
     "node-uuid":"*",
     "bcrypt":"*",
     "forever":"*",
-    "nodemailer":""
+    "nodemailer":"",
+    "nodetime" : ""
   },
   "scripts": {
    "start": "nodemon server.js",

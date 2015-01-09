@@ -121,7 +121,6 @@ body,html{
 
 /*--------------------------  BEGIN Video -----------------------------*/
 
-
 #video-container{
   position:fixed;
   height:100%;
@@ -176,6 +175,7 @@ video{
   display:none;height:100%;
   width:auto;overflow:hidden
 }
+
 /*--------------------------  END Video -----------------------------*/
 
 
