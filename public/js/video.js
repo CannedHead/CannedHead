@@ -70,31 +70,75 @@ function loadVideos(){
 		'</video>');
 	}
 
-		document.getElementById('video0').play();	
-		
+	/*
+		document.getElementById('video0').play();			
+
 		setTimeout(function(){		
 			document.getElementById('video1').play();	
-			//$("#video1").css("opacity",0).delay(100).animate({opacity:1},400).css("zIndex",-2).animate({zIndex:-1},200);	
+			$("#video1").css("opacity",0).delay(100).animate({opacity:1},400);	
 			$("#video0").css("opacity",1).delay(100).animate({opacity:0},800);				
-		},4500);
-
-		
+		},4000);	
 		
 
 		setTimeout(function(){		
 			document.getElementById('video2').play();	
-			//$("#video1").css("opacity",0).delay(100).animate({opacity:1},400).css("zIndex",-2).animate({zIndex:-1},200);	
+			//$("#video2").css("opacity",0).delay(100).animate({opacity:1},400);	
 			$("#video1").css("opacity",1).delay(100).animate({opacity:0},800);	
 			
-		},7500);
+		},6000);
 
 		
 		setTimeout(function(){
 			document.getElementById('video3').play();
 			//$("#video2").css("opacity",0).delay(100).animate({opacity:0},400).css("zIndex",-2).animate({zIndex:-1},200);
 			$("#video2").css("opacity",1).delay(100).animate({opacity:0},800);		
-		},10000);
+		},9000);
+
+		setTimeout(function(){
+			document.getElementById('video4').play();
+			//$("#video2").css("opacity",0).delay(100).animate({opacity:0},400).css("zIndex",-2).animate({zIndex:-1},200);
+			$("#video3").css("opacity",1).delay(100).animate({opacity:0},800);		
+		},12000);
+
+		setTimeout(function(){
+			document.getElementById('video0').play();
+			$("#video0").css("opacity",0).delay(100).animate({opacity:1},400);
+			$("#video4").css("opacity",1).delay(100).animate({opacity:0},800);		
+		},17000);
+	*/
+
+	var i = 0;
+	//var delay=2960;
+	window.setInterval(function(){
+
+		var video = document.getElementById('video'+i);
 		
+		video.play();
+
+		var delay=video.duration*1000;
+
+		
+
+		console.log('playing '+i+' for '+delay);
+
+		setTimeout(function(){  
+
+			if(i == videos.length-1){							
+				$("#video0").css("opacity",0).delay(100).animate({opacity:1},400);	
+				$("#video"+i).css("opacity",1).delay(100).animate({opacity:0},800);		
+				i=0;
+				console.log('i=0');
+			} else {			
+				$("#video"+(i+1)).css("opacity",0).delay(100).animate({opacity:1},400);	
+				$("#video"+i).css("opacity",1).delay(100).animate({opacity:0},800);	
+				i=i+1;
+				console.log('i++');
+			}		
+
+		
+		},delay); 
+
+	},5973)	// repeat forever, polling every 3 seconds
 }
 
 //loop entre videos
