@@ -115,7 +115,7 @@ function loadVideos(){
 		
 		video.play();
 
-		var delay=video.duration*1000;
+		var delay=video.duration*1000-1500;
 
 		
 
@@ -138,7 +138,7 @@ function loadVideos(){
 		
 		},delay); 
 
-	},5973)	// repeat forever, polling every 3 seconds
+	},4000);	// repeat forever, polling every 3 seconds
 }
 
 //loop entre videos
