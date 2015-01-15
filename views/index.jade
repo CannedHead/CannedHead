@@ -19,12 +19,7 @@ block content
 
     section#screen1
       <!-- Begin video and image background-->
-      #video-container
-        video.widthFix#video(autoplay loop poster="img/1.png")
-          source(src="https://s3.amazonaws.com/cannedhead.temp/videos/1.mp4" type="video/mp4")
-          source(src="https://s3.amazonaws.com/cannedhead.temp/videos/1.ogv" type="video/ogg")
-          source(src="https://s3.amazonaws.com/cannedhead.temp/videos/1.webm" type="video/webm")
-        img.widthFix#image(src="img/1.png")          
+      #video-container 
       <!-- End video background-->
          
       .container.bounceLeft
@@ -210,13 +205,8 @@ block content
                 .form-group.shake
                   input.boton(type="submit", value="CONTÁCTANOS")
 
-
-
-
-
-
-
     script(src="/js/classie.js")
+    script(src="/js/video.js")
     script.
      $(document).ready(function(){
               $(".fakeLoader").fakeLoader({
@@ -251,30 +241,7 @@ block content
 
     
     script.
-      function sizeVideo(e){
-          if(typeof e=="undefined"){
-              e=getDocumentRatio()
-          }
-          if(e<9/16){
-              $("video").removeClass("heightFix").addClass("widthFix");
-              $("#image").removeClass("heightFix").addClass("widthFix")
-          } else {
-              $("video").removeClass("widthFix").addClass("heightFix");
-              $("#image").removeClass("widthFix").addClass("heightFix");
-          }
-      }
 
-      document.body.style.backgroundImage="none";
-
-      var wh=$(window).height();
-      var ww=$(window).width();
-      var ratio=wh/ww;sizeVideo(ratio);
-
-      window.onresize=function(){
-          var e=$(window).height();
-          var t=$(window).width();
-          var n=e/t;sizeVideo(n)
-      }  
 
       var  mn = $(".main-nav");
           mns = "main-nav-scrolled";
