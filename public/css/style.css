@@ -502,6 +502,7 @@ Animations
 }
 #sticky{
     border-bottom: solid 4px #F90042;
+    background-color: #222 !important;
 }
 
 .menuCanned ul li a{
@@ -619,7 +620,7 @@ margin-top: 4%;
   background-color: #333; 
   width: 50%; 
   float: left; 
-  background-image: url("http://s5.postimg.org/yxoy4epzr/bigote.png");
+  background-image: url("https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/bigote.jpg");
   background-size: auto 100%; 
   padding-top: 30%; 
 }
@@ -1005,7 +1006,7 @@ figure.effect-julia:hover span img {
 .columnC1{
   height: 100%;
   background-color: #333;
-  background-image: url("http://s5.postimg.org/hkjfpfy1j/clients.jpg") !important;
+  background-image: url("https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/clients.jpg") !important;
   background-size: auto 100%; 
   background-position: 60%; 
   z-index: 3; 
@@ -1108,7 +1109,7 @@ color: #8C1C1C !important;
   background-color: #fff;  
   float: left; 
   z-index: 4; 
-  background-image: url("http://s5.postimg.org/6i9kr40lz/contact2.png");
+  background-image: url("https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/contact2.png");
   background-size: auto 100%;
   background-position: 92%;  
 }

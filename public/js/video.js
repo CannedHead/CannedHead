@@ -1,21 +1,21 @@
 var videos=[
-	{   poster:"https://s3.amazonaws.com/cannedhead.temp/img/1.png",
+	{   poster:"https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/1.png",
 		mp4:"https://s3.amazonaws.com/cannedhead.temp/videos/1.mp4",
 		ogg:"https://s3.amazonaws.com/cannedhead.temp/videos/1.ogv",
 		webm:"https://s3.amazonaws.com/cannedhead.temp/videos/1.webm" },
-	{   poster:"https://s3.amazonaws.com/cannedhead.temp/img/2.png",
+	{   poster:"https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/2.png",
 		mp4:"https://s3.amazonaws.com/cannedhead.temp/videos/2.mp4",
 		ogg:"https://s3.amazonaws.com/cannedhead.temp/videos/2.ogv",
 		webm:"https://s3.amazonaws.com/cannedhead.temp/videos/2.webm" },
-	{   poster:"https://s3.amazonaws.com/cannedhead.temp/img/3.png",
+	{   poster:"https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/3.png",
 		mp4:"https://s3.amazonaws.com/cannedhead.temp/videos/3.mp4",
 		ogg:"https://s3.amazonaws.com/cannedhead.temp/videos/3.ogv",
 		webm:"https://s3.amazonaws.com/cannedhead.temp/videos/3.webm" },
-	{   poster:"https://s3.amazonaws.com/cannedhead.temp/img/4.png",
+	{   poster:"https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/4.png",
 		mp4:"https://s3.amazonaws.com/cannedhead.temp/videos/4.mp4",
 		ogg:"https://s3.amazonaws.com/cannedhead.temp/videos/4.ogv",
 		webm:"https://s3.amazonaws.com/cannedhead.temp/videos/4.webm" },
-	{   poster:"https://s3.amazonaws.com/cannedhead.temp/img/5.png",
+	{   poster:"https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/5.png",
 		mp4:"https://s3.amazonaws.com/cannedhead.temp/videos/5.mp4",
 		ogg:"https://s3.amazonaws.com/cannedhead.temp/videos/5.ogv",
 		webm:"https://s3.amazonaws.com/cannedhead.temp/videos/5.webm" }
@@ -63,7 +63,7 @@ function loadVideos(){
 
 	for (i = 0; i < videos.length; i++) { 
 		var video = videos[i];	
-		$("#video-container").prepend('<video id="video'+i+'" class="widthFix" preload="metadata" poster="'+video.poster+' style="z-index='+(-1-i)+'">'+
+		$("#video-container").prepend('<video id="video'+i+'" class="widthFix" preload="metadata" poster="'+video.poster+'" style="z-index='+(-1-i)+'">'+
 			'<source src="'+video.mp4+'"  type="video/mp4">'+
 			'<source src="'+video.ogg+'"  type="video/ogg">'+
 			'<source src="'+video.webm+'" type="video/webm">'+
