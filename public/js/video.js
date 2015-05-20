@@ -108,16 +108,14 @@ function loadVideos(){
 	*/
 
 	var i = 0;
-	//var delay=2960;
+	var delay=2960;
 	window.setInterval(function(){
 
 		var video = document.getElementById('video'+i);
 		
 		video.play();
 
-		var delay=video.duration*1000-1500;
-
-		
+		var delay=video.duration*1000-2000;		
 
 		console.log('playing '+i+' for '+delay);
 
@@ -141,36 +139,7 @@ function loadVideos(){
 	},4000);	// repeat forever, polling every 3 seconds
 }
 
-//loop entre videos
-function loopVideos(){
-	for (i = 0; i < videos.length; i++) { 	
-		playVideo(i);		
-		
-		if(i == videos.length-1){
-			i=0;
-		}
 
-	}
-}
-
-// Pasa id del video, lo reproduce y desaparece el anterior
-function playVideo(videoid){
-	
-	if(videoid == videos.length-1){
-		setTimeout(function(){		
-			document.getElementById('video0').play();	
-				//$("#video1").css("opacity",0).delay(100).animate({opacity:1},400).css("zIndex",-2).animate({zIndex:-1},200);	
-			$("#video"+(videos.length-1)).css("opacity",1).delay(100).animate({opacity:0},800);				
-		},4500);		
-	} else {
-		setTimeout(function(){		
-			document.getElementById('video'+videoid).play();	
-				//$("#video1").css("opacity",0).delay(100).animate({opacity:1},400).css("zIndex",-2).animate({zIndex:-1},200);	
-			$("#video"+(videoid-1)).css("opacity",1).delay(100).animate({opacity:0},800);				
-		},4500);
-	}
-
-}
 
 
 
