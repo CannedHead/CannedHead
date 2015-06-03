@@ -13,7 +13,6 @@
     "mocha": "*",    
     "should": "~1.2.2",
     "node-uuid":"*",
-    "bcrypt":"*",
     "forever":"*",
     "nodemailer":"",
     "nodetime" : ""
