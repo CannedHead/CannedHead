@@ -1,5 +1,5 @@
 //Load config files
-var config = require(__dirname + '/config/config.json');
+var config = require('./config/config.json');
 
 if(process.env.NODETIME_ACCOUNT_KEY) {
   require('nodetime').profile({
