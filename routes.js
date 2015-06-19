@@ -38,6 +38,32 @@ app.post('/landing',function(req, res) {
 
 });
 
+app.post('/newsletter',function(req, res) {
+
+	if (req.body.email === undefined ) {
+		console.log('missing parameter:email');
+		return next("email not found")
+	}
+ 	
+	var user = new User({
+		name:  	'newsletter',
+		email:  req.body.email
+	});
+
+	mailer.contactus(req.body.user,req.body.email, 'Se han inscrito al newsletter!');
+
+	user.save(function(err) {
+		if(!err) {
+			console.log('New user has been created');
+			res.redirect('/'); 
+		} else {
+			console.log('ERROR: ' + err);
+			res.redirect('/'); 
+		}
+	});		
+
+});
+
 
 app.get('/resources', function(req, res) {
 	res.render('resources/resources'); 

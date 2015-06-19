@@ -24,11 +24,8 @@ var videos=[
 var delay = 3500; //5 Seconds delay
 var firstVideo = true; //Who's first?
 
-$(document).ready(function(){
-
-	loadVideos();
-	//loopVideos();
-   
+$(document).ready(function(){	
+	loadVideos();   
  });
 
 function sizeVideo(e){
@@ -117,7 +114,7 @@ function loadVideos(){
 
 		var delay=video.duration*1000-2000;		
 
-		console.log('playing '+i+' for '+delay);
+		//console.log('playing '+i+' for '+delay);
 
 		setTimeout(function(){  
 
@@ -125,12 +122,12 @@ function loadVideos(){
 				$("#video0").css("opacity",0).delay(100).animate({opacity:1},400);	
 				$("#video"+i).css("opacity",1).delay(100).animate({opacity:0},800);		
 				i=0;
-				console.log('i=0');
+				//console.log('i=0');
 			} else {			
 				$("#video"+(i+1)).css("opacity",0).delay(100).animate({opacity:1},400);	
 				$("#video"+i).css("opacity",1).delay(100).animate({opacity:0},800);	
 				i=i+1;
-				console.log('i++');
+				//console.log('i++');
 			}		
 
 		

@@ -186,74 +186,154 @@ block content
   
     section#screen4-1
     section#screen5
+      .col-sm-12.columnCon2  
+        img.img-responsive.letsContact.center-block(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/letswork2.png" alt="trabajo digital")  
+        br      
+        p.contactText Si tienes curiosidad y quieres escuchar más de nuestros servicios, no dudes en hacer contacto. Las mejores relaciones se construyen hablando cara a cara. Y nosotros estamos dispuestos a hacerlo :)  
+        br  
+        #success-message
+            p Pronto estarémos en contacto contigo.
+        form#contactForm.col-xs-12(action="/landing", method="post")
+                      
+          .form-group
+            input.fieldContact(type="text", name="user", placeholder="Nombre" required)             
+          .form-group
+            input.fieldContact(type="email" name="email" placeholder="E-mail" required)
+          .form-group             
+            textarea.fieldContact.textArea(name="message" placeholder="Mensaje" required)
 
-      .col-sm-12.columnCon2
-            img.img-responsive.letsContact.center-block(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/letswork2.png" alt="trabajo digital")  
-            br
+          .form-group.shake
+            input.boton(type="submit", value="CONTÁCTANOS")
+block scripts
+  script(src="/js/video.js")
+  script.
+    $(document).ready(function(){
+
       
-            p.contactText Si tienes curiosidad y quieres escuchar más de nuestros servicios, no dudes en hacer contacto. Las mejores relaciones se construyen hablando cara a cara. Y nosotros estamos dispuestos a hacerlo :)  
-            br
-          
-            form(action="/landing", method="post")              
-                .form-group
-                  input.fieldContact(type="text", name="user", placeholder="Nombre" required)             
-                .form-group
-                  input.fieldContact(type="email" name="email" placeholder="E-mail" required)
-                .form-group             
-                  textarea.fieldContact.textArea(name="message" placeholder="Mensaje" required)
-    
-                .form-group.shake
-                  input.boton(type="submit", value="CONTÁCTANOS")
 
-    script(src="/js/classie.js")
-    script(src="/js/video.js")
-    script.
-     $(document).ready(function(){
-              $(".fakeLoader").fakeLoader({
+      $("#success-message").hide();
+      $("#sticky").sticky({topSpacing:0});  
+      $(".fakeLoader").fakeLoader({
+          timeToHide:3000,
+          bgColor:"#333",
+          spinner:"spinner4"
+      }); 
 
-                  timeToHide:3000,
-                  bgColor:"#333",
-                  spinner:"spinner4"
-              });
-              
-          });
-
-      video_count =1;
-      videoPlayer = document.getElementById("video");
-    
-
-      function run(){
-              corre=true;
-              video_count++;
-              if (video_count == 4) video_count = 1;
-              var nextVideo = "video/"+video_count+".mp4";
-              videoPlayer.src = nextVideo;
-              $("video").fadeIn(1000,function(){
-                });
-                 
-         }
-
-    script.
-      $(document).ready(function(){
-       $("#sticky").sticky({topSpacing:0});
-
+      jQuery('.fadeInDown').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated fadeInDown',
+        offset: 100
       });
 
+      jQuery('.fadeIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated fadeIn',
+        offset: 100
+       });
+
+      jQuery('.bounceLeft').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInLeft',
+        offset: 100
+       });
+
+      jQuery('.bounceRight').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInRight',
+        offset: 100
+       });
+
+      jQuery('.bounceUp').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInUp',
+        offset: 100
+       });
+
+      jQuery('.pulse').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated pulse',
+        offset: 100
+       });
+
+       jQuery('.zoomIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated zoomIn',
+        offset: 100
+       });
+
+       jQuery('.fadeInRight').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated FadeInRight',
+        offset: 100
+       });
+
+       jQuery('.fadeInLeft').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated FadeInLeft',
+        offset: 100
+       });
+
+       jQuery('.flipInY').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated flipInY',
+        offset: 100
+       });
+
+       jQuery('.shake').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated shake',
+        offset: 100
+       });
+
+       jQuery('.rotateIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated rotateIn',
+        offset: 100
+       }); 
+
+
+    });
     
-    script.
+    video_count =1;
+    videoPlayer = document.getElementById("video");    
 
+    function run(){
+        corre=true;
+        video_count++;
+        if (video_count == 4) video_count = 1;
+        var nextVideo = "video/"+video_count+".mp4";
+        videoPlayer.src = nextVideo;
+        $("video").fadeIn(1000,function(){ });             
+    }
 
-      var  mn = $(".main-nav");
-          mns = "main-nav-scrolled";
-          hdr = $('header').height();
+    $( "#contactForm" ).submit(function( event ) {
 
-      $(window).scroll(function() {
-        if( $(this).scrollTop() > hdr ) {
-          mn.addClass(mns);
-        } else {
-          mn.removeClass(mns);
-        }
-      });  
+      event.preventDefault();
+      
+      
+      var form = $( this ),
+          data = form.serialize(),
+          url = form.attr( "action" );
+     
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function(data, textStatus, xhr) {
+            $('#contactForm').fadeOut(function(){
+                $('#contactForm')[0].reset();  
+                $("#success-message").show().fadeIn(); 
+            });
+                               
+        },
+        complete: function(xhr, textStatus) {
+            if(xhr.status==409){
+                //alert('ya se encuentra registrado!');
+            }
+        } 
+      });
+    });
+
+    var  mn = $(".main-nav");
+        mns = "main-nav-scrolled";
+        hdr = $('header').height();
+
+    $(window).scroll(function() {
+      if( $(this).scrollTop() > hdr ) {
+        mn.addClass(mns);
+      } else {
+        mn.removeClass(mns);
+      }
+    });  
+
 
       
  

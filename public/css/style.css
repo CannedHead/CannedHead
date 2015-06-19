@@ -1514,6 +1514,15 @@ margin-top: 5%;
 height: auto; 
 }
 
+#success-message{
+ color:blue;
+}
+
+#success-message p{
+  background:green;
+  font-size: 20px;
+}
+
 /* -----------Footer-------------------  */
 .footerCont{
 

@@ -18,16 +18,8 @@ html(lang="en")
     <!-- CSS --> 
     link(href="/css/bootstrap.css", rel="stylesheet")
     link(href="/css/style.css", rel="stylesheet")
-
-    <!-- jQuery & jQuery UI-->
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
-    script(src="/js/viewportchecker.js")
-    script(src="/js/jquery.sticky.js")
-    script(src="/js/scroll.js")
-    script(src="/js/smoothscroll.js")
-    script(src="/js/modernizr.custom.js")
-    
-  body(onLoad='init()')
+       
+  body
     block content
 
     footer.footer.footerCan
@@ -39,75 +31,45 @@ html(lang="en")
             img.img-responsive.logoFooter(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/logo.png")
             .pull-right.tip
               p.nText RECIBE TIPS, RECURSOS Y NOTICIAS
-              input.inputFooter(type="email" name="email" placeholder="Ingresa tu e-mail" required)
-              input.btnFooter(type="submit", value="SUSCRIBIRME") 
+              form#newsletterForm(action="/newsletter" method="POST")
+                input.inputFooter(type="email" name="email" placeholder="Ingresa tu e-mail" required)
+                input.btnFooter(type="submit", value="SUSCRIBIRME") 
+              span.glyphicon.glyphicon-ok(style="")
 
         .col-sm-12.footerCopy(style='text-align:center; color:#fff;')        
           p(style='opacity:0.2;').copyright &copy; 2015 CannedHead Todos los derechos reservados.
     
 
 
+    <!-- jQuery & jQuery UI-->
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+    script(src="/js/viewportchecker.js")
+    script(src="/js/jquery.sticky.js")
+    script(src="/js/scroll.js")
+    script(src="/js/smoothscroll.js")
+    script(src="/js/modernizr.custom.js")        
+    block scripts
+    script.
+      $( "#newsletterForm" ).submit(function( event ) {
 
-
-  script.
-    jQuery(document).ready(function() {
-      jQuery('.fadeInDown').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated fadeInDown',
-        offset: 100
-       });
-
-      jQuery('.fadeIn').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated fadeIn',
-        offset: 100
-       });
-
-      jQuery('.bounceLeft').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated bounceInLeft',
-        offset: 100
-       });
-
-      jQuery('.bounceRight').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated bounceInRight',
-        offset: 100
-       });
-
-      jQuery('.bounceUp').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated bounceInUp',
-        offset: 100
-       });
-
-      jQuery('.pulse').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated pulse',
-        offset: 100
-       });
-
-       jQuery('.zoomIn').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated zoomIn',
-        offset: 100
-       });
-
-       jQuery('.fadeInRight').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated FadeInRight',
-        offset: 100
-       });
-
-       jQuery('.fadeInLeft').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated FadeInLeft',
-        offset: 100
-       });
-
-       jQuery('.flipInY').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated flipInY',
-        offset: 100
-       });
-
-       jQuery('.shake').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated shake',
-        offset: 100
-       });
-
-       jQuery('.rotateIn').addClass("hidden2").viewportChecker({
-        classToAdd: 'visible animated rotateIn',
-        offset: 100
-       });
-    });     
+        event.preventDefault();
+        
+        
+        var form = $( this ),
+            data = form.serialize(),
+            url = form.attr( "action" );
+       
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: data,
+          success: function(data, textStatus, xhr) {              
+               $('#newsletterForm')[0].reset();                   
+          },
+          complete: function(xhr, textStatus) {
+              if(xhr.status==409){
+                  //alert('ya se encuentra registrado!');
+              }
+          } 
+        });
+      });
