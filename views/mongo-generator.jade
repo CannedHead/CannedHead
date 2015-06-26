@@ -26,7 +26,7 @@ html(lang='en')
   body
     .container-fluid
         .col-md-8.col-md-offset-2
-            h1 code generator MONGOOSE
+            h1 code generator MONGO-DB
             hr
         .col-md-4
             .form-horizontal
@@ -158,54 +158,56 @@ html(lang='en')
             }
         }
 
-        function savePK(tableID) {
-            try {
-                var table = document.getElementById(tableID);
-                var rowCount = table.rows.length;
-     
-                for(var i=0; i<rowCount; i++) {
-
-                    var row = table.rows[i];
-                    var chkbox = row.cells[0].childNodes[0];
-
-                    if(chkbox != null  && chkbox.checked == true ) {
-                        console.log('check:'+i);
-                        document.getElementById('dataTable').rows[i].cells[4].innerHTML="<span class='glyphicon glyphicon-star'></span>";    
-                    } else {
-                        console.log('uncheck:'+i);
-                        document.getElementById('dataTable').rows[i].cells[4].innerHTML=""; 
-                    }
-                }
-            }catch(e) {
-                alert(e);
-            }
-        }
-
         function generateTable(){
-            var tablename = $('#tablename').val();
+            // variables
+            var tablename = $('#schemaName').val();            
+            var isDate = false;
             
-
-            var texto="CREATE TABLE "+tablename+"\n(\n";
+            texto = "var mongoose = require('mongoose');\n"
+            texto += "var Schema = mongoose.Schema;\n"
+            texto += "var moment = require('moment');\n"
+            texto += "moment.locale('es');\n \n"
+            texto += "var "+ tablename +"Schema = new Schema({\n"
+            
             var table = document.getElementById("dataTable");
                 var rowCount = table.rows.length;     
                 for(var i=2; i<rowCount; i++) {
                     var row = table.rows[i];
-                    if(row.cells[2].innerHTML=="CHAR" || row.cells[2].innerHTML=="VARCHAR" || row.cells[2].innerHTML=="INT"){
-                        texto=texto+" "+row.cells[1].innerHTML+" "+row.cells[2].innerHTML+"("+row.cells[3].innerHTML+")";
-                    } else {
-                        texto=texto+" "+row.cells[1].innerHTML+" "+row.cells[2].innerHTML;
+                    if(row.cells[2].innerHTML=="String"){
+                        texto += "  "+row.cells[1].innerHTML+": { type: String, required: true}";
+                    }else if(row.cells[2].innerHTML=="Date"){
+                        isDate = row.cells[1].innerHTML;
+                        texto+= "   "+row.cells[1].innerHTML+": { type: Date, default: Date.now }";
+                    }
+                    else if(row.cells[2].innerHTML=="Boolean"){       
+                        texto+= "   "+row.cells[1].innerHTML+": { type: Boolean, default: false}";
+                    }
+                    else{
+                        texto+= "   "+row.cells[1].innerHTML+": Number";
                     }
 
                     if(i==rowCount-1){
-                         texto=texto+"\n"
+                         texto += "\n"
                     } else {
-                        texto=texto+",\n"
+                        texto += ",\n"
                     }
-                    
                 }
+            texto=texto+"});\n\n";                                             
 
-            texto=texto+")";                                             
-            document.getElementById('table').innerHTML= "";
+            if(isDate){
+                texto += "// -----------------------------------------------------------------\n"            
+                texto += "// Virtuals\n"
+                texto += "// -----------------------------------------------------------------\n\n"       
+                texto += tablename + "Schema.virtual('fechainformat').get(function(){\n";
+                texto += "  var dateWrapper = moment(this."+isDate+").format('MMMM DD / YYYY h:mm a');\n";
+                texto += "  return dateWrapper;\n";
+                texto += "});\n\n";
+            }
+            
+            texto += "// Export user model\n";
+            texto += "module.exports = mongoose.model('"+tablename+"', "+tablename+"Schema);\n"
+
+            $('#model').html("");
             var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
                 value: texto,
                 lineNumbers: true,
@@ -219,32 +221,6 @@ html(lang='en')
 
         }
 
-        function generateConnection() {
-            var host = $('#host').val();
-            var user = $('#user').val();
-            var password = $('#password').val();
-            var database = $('#database').val();
-
-            var texto = "var mysql = require('mysql');\n\n"+
-                        "var pool  = mysql.createPool({\n"+
-                        "  host:'"+host+"',\n"+
-                        "  user:'"+user+"',\n"+
-                        "  password:'"+password+"',\n"+
-                        "  database:'"+database+"'\n});";
-
-            document.getElementById('connection').innerHTML= "";
-            var editor = CodeMirror(document.body.getElementsByTagName("article")[1], {
-                value: texto,
-                lineNumbers: true,
-                mode: "javascript",
-                keyMap: "sublime",
-                autoCloseBrackets: true,
-                matchBrackets: true,
-                showCursorWhenSelecting: true,
-                theme: "monokai"
-            });  
-        }        
-       
         function generateCreate(){
             var tab="  ";
             var tablename = $('#tablename').val();
@@ -291,7 +267,6 @@ html(lang='en')
                 showCursorWhenSelecting: true,
                 theme: "monokai"
             });  
-
         }
 
         function generateRead(){
@@ -372,7 +347,6 @@ html(lang='en')
                 showCursorWhenSelecting: true,
                 theme: "monokai"
             });  
-
         }
 
         function generateDelete(){
@@ -420,16 +394,15 @@ html(lang='en')
                 showCursorWhenSelecting: true,
                 theme: "monokai"
             });                                           
-            
         }
 
         function generate() {
             generateTable();
-            generateConnection();
-            generateCreate();
-            generateRead();
-            generateUpdate();
-            generateDelete();
+            //generateConnection();
+            //generateCreate();
+            //generateRead();
+            //generateUpdate();
+            //generateDelete();
         }
 
    
