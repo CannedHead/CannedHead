@@ -72,17 +72,17 @@ html(lang='en')
             <!-- Nav tabs -->
             ul.nav.nav-tabs(role="tablist")
                 li
-                    a(href="#model" role="tab" data-toggle="tab") MODEL
+                    a(href="#model" role="tab" aria-controls="model" data-toggle="tab") MODEL
                 li
-                    a(href="#create" role="tab" data-toggle="tab") CREATE
+                    a(href="#create" role="tab" aria-controls="create" data-toggle="tab") CREATE
                 li
-                    a(href="#read" role="tab" data-toggle="tab") READ
+                    a(href="#read" role="tab" aria-controls="read" data-toggle="tab") READ
                 li
-                    a(href="#update" role="tab" data-toggle="tab") UPDATE
+                    a(href="#update" role="tab" aria-controls="update" data-toggle="tab") UPDATE
                 li
-                    a(href="#delete" role="tab" data-toggle="tab") DELETE
+                    a(href="#delete" role="tab" aria-controls="delete" data-toggle="tab") DELETE
                 li
-                    a(href="#routes" role="tab" data-toggle="tab") ROUTES
+                    a(href="#routes" role="tab" aria-controls="routes" data-toggle="tab") ROUTES
 
             <!-- Tab panes -->
             .tab-content
@@ -102,30 +102,7 @@ html(lang='en')
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     script(src="/js/bootstrap.min.js")
     script(type="text/javascript").
-        $('#model a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
-        $('#routes a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
-        $('#create a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
-        $('#read a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
-        $('#update a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
-        $('#delete a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
+
         function showAddRow() {
             $('#addForm').removeClass('hide');
         }
@@ -158,7 +135,7 @@ html(lang='en')
             }
         }
 
-        function generateTable(){
+        function generateModel(){
             // variables
             var tablename = $('#schemaName').val();            
             var isDate = false;
@@ -218,46 +195,47 @@ html(lang='en')
                 showCursorWhenSelecting: true,
                 theme: "monokai"
             });  
-
         }
 
         function generateCreate(){
             var tab="  ";
-            var tablename = $('#tablename').val();
-            
-
-            var texto="create"+tablename+": function(req, res, next){\n pool.getConnection(function(err, connection) {\n";
-            var query =  '    var query =  "INSERT INTO '+tablename+' (';
-            var values ="";
+            var texto=tab+"createArticle: function(req, res, next){\n\n";
 
             var table = document.getElementById("dataTable");
-
-            var rowCount = table.rows.length;     
-            for(var i=2; i<rowCount; i++) {
-                var row = table.rows[i];
-                values=values+'"+connection.escape(req.body.'+row.cells[1].innerHTML+')+"';
-                query=query+row.cells[1].innerHTML;
-
-                if(i==rowCount-1){
-                    query=query+") VALUES (";
-                    values=values+');";\n\n';
+                var rowCount = table.rows.length;     
+                for(var i=2; i<rowCount; i++) {
+                    var row = table.rows[i];
                     
-                } else {                  
-                    query=query+", ";
-                    values=values+", ";
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
+
+                    if(type =="String"){
+                        texto += (i == 'true')? tab+"if": tab+"else if";
+                        texto += "(req.body."+field+" === undefined || req.body."+field+" == '')) {\n";
+                        texto += tab + tab + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab + tab + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab + "}\n";                        
+                    }else if(type=="Date"){
+                        texto += (i == 'true')? tab+"if": tab+"else if";
+                        texto += "\n";   
+                    }
+                    else if(type=="Boolean"){       
+                        texto += (i == 'true')? tab+"if": tab+"else if";
+                        texto += "\n";   
+                    }
+                    else{
+                        texto += (i == 'true')? tab+"if": tab+"else if";
+                        texto += "\n";   
+                    }
+                    
+                    if(i==rowCount-1){
+                         texto += "\n";
+                         texto += tab + "else{"
+                    } 
                 }
-                
-            }
 
-            var connection= tab+tab+"connection.query( query, function(err, rows) {\n"+
-                            tab+tab+tab+"if (err) return next(err);\n"+
-                            tab+tab+tab+"connection.release();\n"+
-                            tab+tab+tab+"res.next();\n"+     
-                            tab+tab+"});\n";
-            texto=texto+query+values+connection+" });\n}";                                             
-
-            document.getElementById('create').innerHTML= "";
-            var editor = CodeMirror(document.body.getElementsByTagName("article")[2], {
+            $('#create').html("");
+            var editor = CodeMirror(document.getElementById("create"), {
                 value: texto,
                 lineNumbers: true,
                 mode: "javascript",
@@ -266,7 +244,7 @@ html(lang='en')
                 matchBrackets: true,
                 showCursorWhenSelecting: true,
                 theme: "monokai"
-            });  
+            });
         }
 
         function generateRead(){
@@ -397,12 +375,12 @@ html(lang='en')
         }
 
         function generate() {
-            generateTable();
-            //generateConnection();
-            //generateCreate();
+            generateModel();
+            generateCreate();
             //generateRead();
             //generateUpdate();
             //generateDelete();
+
         }
 
    
