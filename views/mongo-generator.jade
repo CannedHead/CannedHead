@@ -199,6 +199,11 @@ html(lang='en')
 
         function generateCreate(){
             var tab="  ";
+            var tab2="      ";
+            var tab3="          ";
+            var tab4="              ";
+            var tablename = $('#schemaName').val();
+            
             var texto=tab+"createArticle: function(req, res, next){\n\n";
 
             var table = document.getElementById("dataTable");
@@ -210,29 +215,46 @@ html(lang='en')
                     field = row.cells[1].innerHTML;
 
                     if(type =="String"){
-                        texto += (i == 'true')? tab+"if": tab+"else if";
-                        texto += "(req.body."+field+" === undefined || req.body."+field+" == '')) {\n";
-                        texto += tab + tab + "console.log('missing parameter: "+field+"'); \n";
-                        texto += tab + tab + "res.json(500, { message: '"+field+" not found'});\n";
-                        texto += tab + "}\n";                        
-                    }else if(type=="Date"){
-                        texto += (i == 'true')? tab+"if": tab+"else if";
-                        texto += "\n";   
-                    }
-                    else if(type=="Boolean"){       
-                        texto += (i == 'true')? tab+"if": tab+"else if";
-                        texto += "\n";   
-                    }
-                    else{
-                        texto += (i == 'true')? tab+"if": tab+"else if";
-                        texto += "\n";   
-                    }
-                    
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined || req.body."+field+" == '') {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }else{
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined)) {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }                    
                     if(i==rowCount-1){
-                         texto += "\n";
-                         texto += tab + "else{"
+                        texto += tab2 + "else{\n"
                     } 
                 }
+                
+                texto += tab3 + "var new"+tablename+" = new "+tablename+"({\n";
+                for(var i=2; i<rowCount; i++){
+                    var row = table.rows[i];
+                    
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
+
+                    if(type =="String"){
+                        texto += tab4 + "req.body."+field+".replace(/(?:\\r\\n|\\r|\\n)/g, ' ')";
+                    }else{
+                        texto += tab4 + field + ": req.body." + field;
+                    }
+
+                    // comma's
+                    if(i==rowCount-1){
+                         texto += "\n"
+                    } else {
+                        texto += ",\n"
+                    }
+                }
+            texto += tab3 + "});\n";
+            texto += tab2 + "}\n";
+            texto += tab + "}\n"; 
 
             $('#create').html("");
             var editor = CodeMirror(document.getElementById("create"), {
