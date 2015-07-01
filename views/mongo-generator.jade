@@ -204,7 +204,7 @@ html(lang='en')
             var tab4="              ";
             var tablename = $('#schemaName').val();
             
-            var texto=tab+"createArticle: function(req, res, next){\n\n";
+            var texto=tab+"create"+tablename+": function(req, res, next){\n\n";
 
             var table = document.getElementById("dataTable");
                 var rowCount = table.rows.length;     
@@ -240,7 +240,7 @@ html(lang='en')
                     field = row.cells[1].innerHTML;
 
                     if(type =="String"){
-                        texto += tab4 + "req.body."+field+".replace(/(?:\\r\\n|\\r|\\n)/g, ' ')";
+                        texto += tab4 + field + ": req.body."+field+".replace(/(?:\\r\\n|\\r|\\n)/g, ' ')";
                     }else{
                         texto += tab4 + field + ": req.body." + field;
                     }
@@ -303,41 +303,69 @@ html(lang='en')
         }
 
         function generateUpdate(){
-            var tab=" ";
-            var tablename = $('#tablename').val();
+            var tab="  ";
+            var tab2="      ";
+            var tab3="          ";
+            var tab4="              ";
+            var tab5="                  ";
+            var tab6="                      ";
+            var tablename = $('#schemaName').val();
             
-
-            var texto="update"+tablename+": function(req, res, next){\n pool.getConnection(function(err, connection) {\n";
-            var query =  '  var query =  "UPDATE '+tablename+' SET ';
-            var values ="";
+            var texto=tab+"create"+tablename+": function(req, res, next){\n\n";
 
             var table = document.getElementById("dataTable");
-
-            var rowCount = table.rows.length;     
-            for(var i=2; i<rowCount; i++) {
-                var row = table.rows[i];
-                query=query+row.cells[1].innerHTML+'="+connection.escape(req.body.'+row.cells[1].innerHTML+')+"';
-                
-
-                if(i==rowCount-1){
-                    query=query+';";\n\n';
+                var rowCount = table.rows.length;     
+                for(var i=2; i<rowCount; i++) {
+                    var row = table.rows[i];
                     
-                } else {                  
-                    query=query+",";
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
+
+                    if(type =="String"){
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined || req.body."+field+" == '') {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }else{
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined)) {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }                    
+                    if(i==rowCount-1){
+                        texto += tab2 + "else{\n"
+                    } 
                 }
                 
-            }
+                texto += tab3 + tablename + ".findById(req.params.id, function(err, one){\n";
+                
+                for(var i=2; i<rowCount; i++){
+                    var row = table.rows[i];
+                    
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
 
-            var connection= tab+tab+"connection.query( query, function(err, rows) {\n"+
-                            tab+tab+tab+"if (err) return next(err);\n"+
-                            tab+tab+tab+"connection.release();\n"+
-                            tab+tab+tab+"res.next();\n"+     
-                            tab+tab+"});\n";
-            texto=texto+query+values+connection+" });\n}";                                             
+                    if(type =="String"){
+                        texto += tab6 + field + ": req.body."+field+".replace(/(?:\\r\\n|\\r|\\n)/g, ' ')";
+                    }else{
+                        texto += tab6 + field + ": req.body." + field;
+                    }
 
-            document.getElementById('update').innerHTML= "";
+                    // comma's
+                    if(i==rowCount-1){
+                         texto += "\n"
+                    } else {
+                        texto += ",\n"
+                    }
+                }
+            texto += tab3 + "});\n";
+            texto += tab2 + "}\n";
+            texto += tab + "}\n"; 
 
-            var editor = CodeMirror(document.body.getElementsByTagName("article")[4], {
+            $('#create').html("");
+            var editor = CodeMirror(document.getElementById("create"), {
                 value: texto,
                 lineNumbers: true,
                 mode: "javascript",
@@ -346,7 +374,7 @@ html(lang='en')
                 matchBrackets: true,
                 showCursorWhenSelecting: true,
                 theme: "monokai"
-            });  
+            });
         }
 
         function generateDelete(){
