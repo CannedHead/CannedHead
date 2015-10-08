@@ -7,6 +7,10 @@ app.get('/', function(req, res) {
 	res.render('index'); 
 });
 
+app.get('/portfolio', function(req, res) {
+	res.render('portfolio'); 
+});
+
 app.post('/landing',function(req, res) {
 
 	if (req.body.user === undefined) {
@@ -35,7 +39,6 @@ app.post('/landing',function(req, res) {
 			res.redirect('/'); 
 		}
 	});		
-
 });
 
 app.post('/newsletter',function(req, res) {
@@ -61,9 +64,7 @@ app.post('/newsletter',function(req, res) {
 			res.redirect('/'); 
 		}
 	});		
-
 });
-
 
 app.get('/resources', function(req, res) {
 	res.render('resources/resources'); 
@@ -80,8 +81,6 @@ app.get('/sql-generator', function(req, res) {
 app.get('/mongo-generator', function(req, res) {
 	res.render('mongo-generator'); 
 });
-
-
 
 
 /*
