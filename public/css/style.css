@@ -1374,12 +1374,14 @@ margin-top: 5%;
 }
 
 .portfolio-title{
+  margin-top: 15%;
   font-family: 'novablack'; 
   color: #222;
   font-size: 2.5em !important;  
 }
 
 .portfolio-cont{
+  margin-top: 8%;
   font-family: 'novaregular'; 
   color: #333; 
   font-size: 1.1em;
@@ -1412,11 +1414,18 @@ margin-top: 5%;
 }
 
 .odd{
-  padding-left: 30px;
+  padding-left: 60px;
+  padding-right: 20px !important;
+}
+
+.odd1{
+  padding-left: 40px;
+  padding-right: 20px !important;
 }
 
 .even{
   padding-right: 30px !important;
+  padding-left: 50px !important;
 }
 
 .row{
