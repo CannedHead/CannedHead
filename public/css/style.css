@@ -1393,7 +1393,9 @@ margin-top: 5%;
 }
 
 .portfolio{
+  float: left; 
   margin-top:0%;
+  padding-right: 0px !important;
 }
 
 .gray{
@@ -1408,6 +1410,19 @@ margin-top: 5%;
 .wide-p{
   width: 100% !important;
 }
+
+.odd{
+  padding-left: 30px;
+}
+
+.even{
+  padding-right: 30px !important;
+}
+
+.row{
+  margin-right: 0px !important;
+}
+
 
 
 

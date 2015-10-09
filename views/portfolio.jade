@@ -6,102 +6,94 @@ block content
       button.menu-button2.pull-right#open-button
         img.center-block.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/menu_Mobile.png")
 
-    .menu-wrap
+    .menu-wrap.visible-xs
       nav.menu
         .icon-list
           a.smoothScroll(href="/#screen1")#close-button2 PORTFOLIO
       button.close-button#close-button
 
     .menuCanned.full
-          ul.nav.navbar-nav.full#sticky
-              li
-                img.square.logo(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/logo_Chapa.png" alt="Experiencia digital")
-              li.linkMenu(style="margin-left: 2%;")
-                nav.cl-effect-13
-                  a.smoothScroll.center(href="/portfolio" style='font-size: 1.2em;') PORTFOLIO : CREATING DIGITAL RELATIONS
+      ul.nav.navbar-nav.full#sticky
+        li
+          img.square.logo(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/logo_Chapa.png" alt="Experiencia digital")
+        li.linkMenu(style="margin-left: 2%;")
+          nav.cl-effect-13
+            a.smoothScroll(href="/portfolio" style='font-size: 1.2em;') PORTFOLIO : CREATING DIGITAL RELATIONS
 
-    section#p1     
-      .portfolio-left.col-md-3
-         
-            h1.portfolio-title ALDEA SAN MARCOS
-            p.portfolio-cont It's a residential project in Bogotá D.C. that ought to be modern, fresh and exclusive but at the same time peaceful and independent. Our website grasps the concept using a modern and colorful design and is a soothing invitation to know more about the project !!    
-            br
+    section#p1
+      .portfolio-left.col-md-3         
+        h1.portfolio-title ALDEA SAN MARCOS
+        p.portfolio-cont It's a residential project in Bogotá D.C. that ought to be modern, fresh and exclusive but at the same time peaceful and independent. Our website grasps the concept using a modern and colorful design and is a soothing invitation to know more about the project !!    
+        br
 
       .portfolio-right.col-md-9
         img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/aldea_san_marcos.png')
 
     .gray
 
-    section#p2a 
+    section#p2a
       .row
         .col-md-9.portfolio
           img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/diip.png')
 
-        .col-md-3.portfolio
+        .col-md-3.portfolio.even
           h1.portfolio-title DIIP
           p.portfolio-cont Las personas son bombardeados con muchas opciones, se espera que las empresas provean experiencias digitales atractivas y recompensen a sus clientes por su lealtad.
           br
 
     .gray
             
-    section#p3a     
+    section#p3a
       .row
-        .col-md-3.portfolio         
-              h1.portfolio-title SMARTBRIX
-              p.portfolio-cont Las personas son bombardeados con muchas opciones, se espera que las empresas provean experiencias digitales atractivas y recompensen a sus clientes por su lealtad.
-              br
+        .col-md-3.portfolio.odd         
+          h1.portfolio-title SMARTBRIX
+          p.portfolio-cont Las personas son bombardeados con muchas opciones, se espera que las empresas provean experiencias digitales atractivas y recompensen a sus clientes por su lealtad.
+          br
 
         .col-md-9.portfolio
           img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/smartbrix.png')
 
     .gray
 
-    section#p2  
+    section#p2
       .row
         .col-md-9.portfolio
           img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/sietepm.png')
-
-        .col-md-3.portfolio
+        .col-md-3.portfolio.even
           h1.portfolio-title SIETE PM
           p.portfolio-cont Las personas son bombardeados con muchas opciones, se espera que las empresas provean experiencias digitales atractivas y recompensen a sus clientes por su lealtad.
           br
 
     .gray
             
-    section#p3     
+    section#p3
       .row
-        .col-md-3.portfolio         
-              h1.portfolio-title NOTARIA 26
-              p.portfolio-cont Las personas son bombardeados con muchas opciones, se espera que las empresas provean experiencias digitales atractivas y recompensen a sus clientes por su lealtad.
-              br
+        .col-md-3.portfolio.odd         
+          h1.portfolio-title NOTARIA 26
+          p.portfolio-cont Las personas son bombardeados con muchas opciones, se espera que las empresas provean experiencias digitales atractivas y recompensen a sus clientes por su lealtad.
+          br
 
         .col-md-9.portfolio
           img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/notaria26.png')
 
-
     .gray
 
-    section#p4  
+    section#p4
       .row
         .col-md-9.portfolio
           img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/gecar.png')
 
-        .col-md-3.portfolio
+        .col-md-3.portfolio.even
           h1.portfolio-title GECAR
           p.portfolio-cont Las personas son bombardeados con muchas opciones, se espera que las empresas provean experiencias digitales atractivas y recompensen a sus clientes por su lealtad.
           br
 
     .gray
-            
-
-
 
 block scripts
   script(src="/js/video.js")
   script.
-    $(document).ready(function(){
-
-      
+    $(document).ready(function(){      
 
       $("#success-message").hide();
       $("#sticky").sticky({topSpacing:0});  
