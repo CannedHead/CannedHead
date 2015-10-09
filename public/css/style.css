@@ -1405,7 +1405,9 @@ margin-top: 5%;
   background-color: #3D3D3D;
 }
 
-
+.img-responsive{
+  width: 100% !important;
+}
 
 
 
