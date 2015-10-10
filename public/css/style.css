@@ -1365,9 +1365,72 @@ margin-top: 5%;
 }
 
 
+/*----------------------- Portfolio --------------------------------*/
 
+.portfolio-left{
+  float: left; 
+  background-color: #fff; 
+  margin-top:94px; 
+}
 
+.portfolio-title{
+  margin-top: 15%;
+  font-family: 'novablack'; 
+  color: #222;
+  font-size: 2.5em !important;  
+}
 
+.portfolio-cont{
+  margin-top: 8%;
+  font-family: 'novaregular'; 
+  color: #333; 
+  font-size: 1.1em;
+}
+
+.portfolio-right{
+  background-color: #FFF; 
+  float: left; 
+  margin-top:94px;
+  padding: 0px !important;
+}
+
+.portfolio{
+  float: left; 
+  margin-top:0%;
+  padding-right: 0px !important;
+}
+
+.gray{
+  position: relative;
+  width: 100%;
+  height:4px;
+  margin:0%;
+  float: left;
+  background-color: #3D3D3D;
+}
+
+.wide-p{
+  width: 100% !important;
+}
+
+.odd{
+  padding-left: 60px;
+  padding-right: 20px !important;
+}
+
+.odd1{
+  padding-left: 40px;
+  padding-right: 20px !important;
+}
+
+.even{
+  padding-right: 30px !important;
+  padding-left: 50px !important;
+}
+
+.row{
+  margin-right: 0px !important;
+}
 
 
 

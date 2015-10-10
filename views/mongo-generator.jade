@@ -1,0 +1,436 @@
+doctype html
+html(lang='en')
+  head
+    title MONGOOSE GENERATOR
+    link(href='/css/bootstrap.css', rel='stylesheet')
+
+    link(rel="stylesheet" href="/lib/codemirror-4.5/lib/codemirror.css")
+    link(rel="stylesheet" href="/lib/codemirror-4.5/addon/fold/foldgutter.css")
+    link(rel="stylesheet" href="/lib/codemirror-4.5/addon/dialog/dialog.css")
+    link(rel="stylesheet" href="/lib/codemirror-4.5/theme/monokai.css")
+    script(src="/lib/codemirror-4.5/lib/codemirror.js")
+    script(src="/lib/codemirror-4.5/addon/search/searchcursor.js")
+    script(src="/lib/codemirror-4.5/addon/search/search.js")
+    script(src="/lib/codemirror-4.5/addon/dialog/dialog.js")
+    script(src="/lib/codemirror-4.5/addon/edit/matchbrackets.js")
+    script(src="/lib/codemirror-4.5/addon/edit/closebrackets.js")
+    script(src="/lib/codemirror-4.5/addon/comment/comment.js")
+    script(src="/lib/codemirror-4.5/addon/wrap/hardwrap.js")
+    script(src="/lib/codemirror-4.5/addon/fold/foldcode.js")
+    script(src="/lib/codemirror-4.5/addon/fold/brace-fold.js")
+    script(src="/lib/codemirror-4.5/mode/javascript/javascript.js")
+    script(src="./lib/codemirror-4.5/keymap/sublime.js")
+    style(type="text/css").
+      .CodeMirror {border-top: 1px solid #eee; border-bottom: 1px solid #eee; line-height: 1.3; height: 500px}
+      .CodeMirror-linenumbers { padding: 0 8px; }
+  body
+    .container-fluid
+        .col-md-8.col-md-offset-2
+            h1 code generator MONGO-DB
+            hr
+        .col-md-4
+            .form-horizontal
+                .form-group
+                    label.col-sm-2.control-label Schema
+                    .col-sm-10
+                        input.form-control(type="text")#schemaName
+
+            .form-group
+                btn.btn.btn-lg.btn-block.btn-danger(type="submit" onclick="generate()") GENERAR CODIGO
+        .col-md-8
+            .panel.panel-default
+                .panel-heading                    
+                    .btn-group
+                        button.btn.btn-default(type="button" onclick="showAddRow()") Add field
+                        button.btn.btn-default(type="button" onclick="deleteRow('dataTable')") Delete field 
+                .panel-body(style="min-height:400px;")
+                    .table-responsive
+                        table#dataTable.table
+                            thead
+                                tr
+                                    th 
+                                    th Field
+                                    th Type
+                                    th 
+                            tbody
+                                tr.hide#addForm
+                                    td
+                                        
+                                    td
+                                        input(type="text")#field
+                                    td
+                                        select#type
+                                            option(value="String") String
+                                            option(value="Date") Date
+                                            option(value="Boolean") Boolean
+                                            option(value="Number") Number
+                                    td
+                                        button.btn.btn-default(type="button" onclick="addRow()") Agregar
+
+
+        .col-md-10.col-md-offset-1(style="margin-top:20px; margin-bottom:100px;")            
+            <!-- Nav tabs -->
+            ul.nav.nav-tabs(role="tablist")
+                li
+                    a(href="#model" role="tab" aria-controls="model" data-toggle="tab") MODEL
+                li
+                    a(href="#create" role="tab" aria-controls="create" data-toggle="tab") CREATE
+                li
+                    a(href="#read" role="tab" aria-controls="read" data-toggle="tab") READ
+                li
+                    a(href="#update" role="tab" aria-controls="update" data-toggle="tab") UPDATE
+                li
+                    a(href="#delete" role="tab" aria-controls="delete" data-toggle="tab") DELETE
+                li
+                    a(href="#routes" role="tab" aria-controls="routes" data-toggle="tab") ROUTES
+
+            <!-- Tab panes -->
+            .tab-content
+              article.tab-pane.active#model
+              article.tab-pane#create
+              article.tab-pane#read
+              article.tab-pane#update
+              article.tab-pane#delete
+              article.tab-pane#routes
+
+    footer.footer
+        .container
+            p.text-muted &copy; CannedHead 2014
+    <!-- jQuery  -->
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+    script(src="http://code.jquery.com/ui/1.11.1/jquery-ui.js")
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    script(src="/js/bootstrap.min.js")
+    script(type="text/javascript").
+
+        function showAddRow() {
+            $('#addForm').removeClass('hide');
+        }
+        function addRow() {
+            $('#dataTable tbody').append('<tr><td><input type="checkbox" class="checkbox_check" name="chk"/></td><td>'+$('#field').val()+'</td><td>'+$('#type').val()+'</td><td></td></tr>');
+            $('#addForm').addClass('hide');
+            $('#field').val('');
+            $('#length').val('');
+        } 
+        function deleteRow(tableID) {
+            try {
+                var table = document.getElementById(tableID);
+                var rowCount = table.rows.length;
+     
+                for(var i=0; i<rowCount; i++) {
+                    var row = table.rows[i];
+                    var chkbox = row.cells[0].childNodes[0];
+                    if(null != chkbox && true == chkbox.checked) {
+                        if(rowCount <= 1) {
+                            alert("Cannot delete all the rows.");
+                            break;
+                        }
+                        table.deleteRow(i);
+                        rowCount--;
+                        i--;
+                    }    
+                }
+            }catch(e) {
+                alert(e);
+            }
+        }
+
+        function generateModel(){
+            // variables
+            var tablename = $('#schemaName').val();            
+            var isDate = false;
+            
+            texto = "var mongoose = require('mongoose');\n"
+            texto += "var Schema = mongoose.Schema;\n"
+            texto += "var moment = require('moment');\n"
+            texto += "moment.locale('es');\n \n"
+            texto += "var "+ tablename +"Schema = new Schema({\n"
+            
+            var table = document.getElementById("dataTable");
+                var rowCount = table.rows.length;     
+                for(var i=2; i<rowCount; i++) {
+                    var row = table.rows[i];
+                    if(row.cells[2].innerHTML=="String"){
+                        texto += "  "+row.cells[1].innerHTML+": { type: String, required: true}";
+                    }else if(row.cells[2].innerHTML=="Date"){
+                        isDate = row.cells[1].innerHTML;
+                        texto+= "   "+row.cells[1].innerHTML+": { type: Date, default: Date.now }";
+                    }
+                    else if(row.cells[2].innerHTML=="Boolean"){       
+                        texto+= "   "+row.cells[1].innerHTML+": { type: Boolean, default: false}";
+                    }
+                    else{
+                        texto+= "   "+row.cells[1].innerHTML+": Number";
+                    }
+
+                    if(i==rowCount-1){
+                         texto += "\n"
+                    } else {
+                        texto += ",\n"
+                    }
+                }
+            texto=texto+"});\n\n";                                             
+
+            if(isDate){
+                texto += "// -----------------------------------------------------------------\n"            
+                texto += "// Virtuals\n"
+                texto += "// -----------------------------------------------------------------\n\n"       
+                texto += tablename + "Schema.virtual('fechainformat').get(function(){\n";
+                texto += "  var dateWrapper = moment(this."+isDate+").format('MMMM DD / YYYY h:mm a');\n";
+                texto += "  return dateWrapper;\n";
+                texto += "});\n\n";
+            }
+            
+            texto += "// Export user model\n";
+            texto += "module.exports = mongoose.model('"+tablename+"', "+tablename+"Schema);\n"
+
+            $('#model').html("");
+            var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
+                value: texto,
+                lineNumbers: true,
+                mode: "javascript",
+                keyMap: "sublime",
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: "monokai"
+            });  
+        }
+
+        function generateCreate(){
+            var tab="  ";
+            var tab2="      ";
+            var tab3="          ";
+            var tab4="              ";
+            var tablename = $('#schemaName').val();
+            
+            var texto=tab+"create"+tablename+": function(req, res, next){\n\n";
+
+            var table = document.getElementById("dataTable");
+                var rowCount = table.rows.length;     
+                for(var i=2; i<rowCount; i++) {
+                    var row = table.rows[i];
+                    
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
+
+                    if(type =="String"){
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined || req.body."+field+" == '') {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }else{
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined)) {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }                    
+                    if(i==rowCount-1){
+                        texto += tab2 + "else{\n"
+                    } 
+                }
+                
+                texto += tab3 + "var new"+tablename+" = new "+tablename+"({\n";
+                for(var i=2; i<rowCount; i++){
+                    var row = table.rows[i];
+                    
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
+
+                    if(type =="String"){
+                        texto += tab4 + field + ": req.body."+field+".replace(/(?:\\r\\n|\\r|\\n)/g, ' ')";
+                    }else{
+                        texto += tab4 + field + ": req.body." + field;
+                    }
+
+                    // comma's
+                    if(i==rowCount-1){
+                         texto += "\n"
+                    } else {
+                        texto += ",\n"
+                    }
+                }
+            texto += tab3 + "});\n";
+            texto += tab2 + "}\n";
+            texto += tab + "}\n"; 
+
+            $('#create').html("");
+            var editor = CodeMirror(document.getElementById("create"), {
+                value: texto,
+                lineNumbers: true,
+                mode: "javascript",
+                keyMap: "sublime",
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: "monokai"
+            });
+        }
+
+        function generateRead(){
+            var tab=" ";
+            var tablename = $('#tablename').val();
+            
+
+            var texto="read"+tablename+": function(callback){\n pool.getConnection(function(err, connection) {\n";
+            var query =  '  var query =  "SELECT * FROM '+tablename+' ;";\n';
+            var values ="";
+
+            var table = document.getElementById("dataTable");
+
+           
+
+            var connection= tab+tab+"connection.query( query, function(err, rows) {\n"+
+                            tab+tab+tab+"if (err) return next(err);\n"+
+                            tab+tab+tab+"connection.release();\n"+
+                            tab+tab+tab+"callback(null,rows); \n"+     
+                            tab+tab+"});\n";
+            texto=texto+query+values+connection+" });\n}";                                             
+
+            document.getElementById('read').innerHTML= "";
+            var editor = CodeMirror(document.body.getElementsByTagName("article")[3], {
+                value: texto,
+                lineNumbers: true,
+                mode: "javascript",
+                keyMap: "sublime",
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: "monokai"
+            });  
+        }
+
+        function generateUpdate(){
+            var tab="  ";
+            var tab2="      ";
+            var tab3="          ";
+            var tab4="              ";
+            var tab5="                  ";
+            var tab6="                      ";
+            var tablename = $('#schemaName').val();
+            
+            var texto=tab+"create"+tablename+": function(req, res, next){\n\n";
+
+            var table = document.getElementById("dataTable");
+                var rowCount = table.rows.length;     
+                for(var i=2; i<rowCount; i++) {
+                    var row = table.rows[i];
+                    
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
+
+                    if(type =="String"){
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined || req.body."+field+" == '') {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }else{
+                        texto += (i == 2)? tab2 + "if": tab2 + "else if";
+                        texto += "(req.body."+field+" === undefined)) {\n";
+                        texto += tab3 + "console.log('missing parameter: "+field+"'); \n";
+                        texto += tab3 + "res.json(500, { message: '"+field+" not found'});\n";
+                        texto += tab2 + "}\n";                        
+                    }                    
+                    if(i==rowCount-1){
+                        texto += tab2 + "else{\n"
+                    } 
+                }
+                
+                texto += tab3 + tablename + ".findById(req.params.id, function(err, one){\n";
+                
+                for(var i=2; i<rowCount; i++){
+                    var row = table.rows[i];
+                    
+                    type = row.cells[2].innerHTML;
+                    field = row.cells[1].innerHTML;
+
+                    if(type =="String"){
+                        texto += tab6 + field + ": req.body."+field+".replace(/(?:\\r\\n|\\r|\\n)/g, ' ')";
+                    }else{
+                        texto += tab6 + field + ": req.body." + field;
+                    }
+
+                    // comma's
+                    if(i==rowCount-1){
+                         texto += "\n"
+                    } else {
+                        texto += ",\n"
+                    }
+                }
+            texto += tab3 + "});\n";
+            texto += tab2 + "}\n";
+            texto += tab + "}\n"; 
+
+            $('#create').html("");
+            var editor = CodeMirror(document.getElementById("create"), {
+                value: texto,
+                lineNumbers: true,
+                mode: "javascript",
+                keyMap: "sublime",
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: "monokai"
+            });
+        }
+
+        function generateDelete(){
+            var tab=" ";
+            var tablename = $('#tablename').val();
+            
+
+            var texto="delete"+tablename+": function(req, res, next){\n  pool.getConnection(function(err, connection) {\n";
+            var query =  '  var query =  "DELETE FROM '+tablename+' (';
+            var values ="";
+
+            var table = document.getElementById("dataTable");
+
+            var rowCount = table.rows.length;     
+            for(var i=2; i<rowCount; i++) {
+                var row = table.rows[i];
+                values=values+row.cells[1].innerHTML+'"=req.body.'+row.cells[1].innerHTML+'+"';
+                query=query+row.cells[1].innerHTML;
+
+                if(i==rowCount-1){
+                    query=query+") WHERE ";
+                    values=values+");\n\n";
+                    
+                } else {                  
+                    query=query+", ";
+                    values=values+", ";
+                }
+                
+            }
+
+            var connection= tab+tab+"connection.query( query, function(err, rows) {\n"+
+                            tab+tab+tab+"if (err) return next(err);\n"+
+                            tab+tab+tab+"connection.release();\n"+
+                            tab+tab+tab+"res.next();\n"+     
+                            tab+tab+"});\n";
+            texto=texto+query+values+connection+" });\n}";  
+            document.getElementById('delete').innerHTML= "";
+            var editor = CodeMirror(document.body.getElementsByTagName("article")[5], {
+                value: texto,
+                lineNumbers: true,
+                mode: "javascript",
+                keyMap: "sublime",
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: "monokai"
+            });                                           
+        }
+
+        function generate() {
+            generateModel();
+            generateCreate();
+            //generateRead();
+            //generateUpdate();
+            //generateDelete();
+
+        }
+
+   

@@ -121,6 +121,7 @@ html(lang='en')
     script(type="text/javascript").
         $('#table a').click(function (e) {
           e.preventDefault()
+          console.log('show table');
           $(this).tab('show')
         })
         $('#connection a').click(function (e) {

@@ -1,0 +1,232 @@
+extend layout/layout
+block content   
+    .fakeLoader
+    .menuMobile.full
+      img.square2.logo(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/logo_Chapa.png")
+      button.menu-button2.pull-right#open-button
+        img.center-block.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/menu_Mobile.png")
+
+    .menu-wrap.visible-xs
+      nav.menu
+        .icon-list
+          a.smoothScroll(href="/#screen1")#close-button2 PORTFOLIO
+      button.close-button#close-button
+
+    .menuCanned.full
+      ul.nav.navbar-nav.full#sticky
+        li
+          img.square.logo(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/img/logo_Chapa.png" alt="Experiencia digital")
+        li.linkMenu(style="margin-left: 2%;")
+          nav.cl-effect-13
+            a.smoothScroll(href="/portfolio" style='font-size: 1.2em;') PORTFOLIO : CREATING DIGITAL RELATIONS
+
+    section#p1
+      .portfolio-left.col-md-3.odd1        
+        h1.portfolio-title ALDEA SAN MARCOS
+        p.portfolio-cont It's a residential project in Bogotá D.C. that ought to be modern, fresh and exclusive but at the same time peaceful and independent. Our website grasps the concept using a modern and colorful design and is a soothing invitation to know more about the project.   
+        br
+
+      .portfolio-right.col-md-9
+        img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/aldea_san_marcos.png')
+
+    .gray
+
+    section#p2a
+      .row
+        .col-md-9.portfolio
+          img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/diip.png')
+
+        .col-md-3.portfolio.even
+          h1.portfolio-title DIIP
+          p.portfolio-cont Developed and implemented DIIP studio's website and e-shop. Their amazing stock videos and photos are now readily available. A user friendly environment is just what they needed to share their art to the world.  
+          br
+
+    .gray
+            
+    section#p3a
+      .row
+        .col-md-3.portfolio.odd         
+          h1.portfolio-title SMARTBRIX
+          p.portfolio-cont Leaders in Modular Construction in Colombia. SMARTBRIX wanted to present their projects and products in a set as structured as their module building sections. Ordered and clean design was the rule of thumb. 
+          br
+
+        .col-md-9.portfolio
+          img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/smartbrix.png')
+
+    .gray
+
+    section#p2
+      .row
+        .col-md-9.portfolio
+          img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/sietepm.png')
+        .col-md-3.portfolio.even
+          h1.portfolio-title SIETE PM
+          p.portfolio-cont Families are eager to nurture their family experiences. SIETEPM is the platform to find new fullfilling activities for the daily family life. Blogs and Newsletter suscriptions are among many ways of keeping you inform and updated on family trends and topics.   
+          br
+
+    .gray
+            
+    section#p3
+      .row
+        .col-md-3.portfolio.odd         
+          h1.portfolio-title NOTARIA 26
+          p.portfolio-cont Legal service is bound to good service. Service is a key word for NOTARIA26 and also the emphasis of the design. Guidance and assistance are present all over their website.     
+          br
+
+        .col-md-9.portfolio
+          img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/notaria26.png')
+
+    .gray
+
+    section#p4
+      .row
+        .col-md-9.portfolio
+          img.img-responsive.wide-p(src='https://s3-sa-east-1.amazonaws.com/cannedhead.canned/portfolio/gecar.png')
+
+        .col-md-3.portfolio.even
+          h1.portfolio-title GECAR
+          p.portfolio-cont Branding was the experience with GECAR. Their institutional identity was captured in a modern and robust design. Their webpage came as an expression of the brand. 
+          br
+
+    .gray
+
+block scripts
+  script(src="/js/video.js")
+  script.
+    $(document).ready(function(){      
+
+      $("#success-message").hide();
+      $("#sticky").sticky({topSpacing:0});  
+      $(".fakeLoader").fakeLoader({
+          timeToHide:3000,
+          bgColor:"#333",
+          spinner:"spinner4"
+      }); 
+
+      jQuery('.fadeInDown').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated fadeInDown',
+        offset: 100
+      });
+
+      jQuery('.fadeIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated fadeIn',
+        offset: 100
+       });
+
+      jQuery('.bounceLeft').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInLeft',
+        offset: 100
+       });
+
+      jQuery('.bounceRight').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInRight',
+        offset: 100
+       });
+
+      jQuery('.bounceUp').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated bounceInUp',
+        offset: 100
+       });
+
+      jQuery('.pulse').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated pulse',
+        offset: 100
+       });
+
+       jQuery('.zoomIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated zoomIn',
+        offset: 100
+       });
+
+       jQuery('.fadeInRight').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated FadeInRight',
+        offset: 100
+       });
+
+       jQuery('.fadeInLeft').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated FadeInLeft',
+        offset: 100
+       });
+
+       jQuery('.flipInY').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated flipInY',
+        offset: 100
+       });
+
+       jQuery('.shake').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated shake',
+        offset: 100
+       });
+
+       jQuery('.rotateIn').addClass("hidden2").viewportChecker({
+        classToAdd: 'visible animated rotateIn',
+        offset: 100
+       }); 
+
+
+    });
+    
+    video_count =1;
+    videoPlayer = document.getElementById("video");    
+
+    function run(){
+        corre=true;
+        video_count++;
+        if (video_count == 4) video_count = 1;
+        var nextVideo = "video/"+video_count+".mp4";
+        videoPlayer.src = nextVideo;
+        $("video").fadeIn(1000,function(){ });             
+    }
+
+    $( "#contactForm" ).submit(function( event ) {
+
+      event.preventDefault();
+      
+      
+      var form = $( this ),
+          data = form.serialize(),
+          url = form.attr( "action" );
+     
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function(data, textStatus, xhr) {
+            $('#contactForm').fadeOut(function(){
+                $('#contactForm')[0].reset();  
+                $("#success-message").show().fadeIn(); 
+            });
+                               
+        },
+        complete: function(xhr, textStatus) {
+            if(xhr.status==409){
+                //alert('ya se encuentra registrado!');
+            }
+        } 
+      });
+    });
+
+    var  mn = $(".main-nav");
+        mns = "main-nav-scrolled";
+        hdr = $('header').height();
+
+    $(window).scroll(function() {
+      if( $(this).scrollTop() > hdr ) {
+        mn.addClass(mns);
+      } else {
+        mn.removeClass(mns);
+      }
+    });  
+
+
+      
+ 
+     
+
+
+    
+
+    
+
+    
+  
