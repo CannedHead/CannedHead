@@ -78,6 +78,10 @@ app.get('/sql-generator', function(req, res) {
 	res.render('sql-generator'); 
 });
 
+app.get('/pitch', function(req, res) {
+	res.render('pitch'); 
+});
+
 app.get('/mongo-generator', function(req, res) {
 	res.render('mongo-generator'); 
 });

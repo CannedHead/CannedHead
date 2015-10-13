@@ -1,0 +1,159 @@
+/*Le pure CSS*/
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	font-family: 'Lato', sans-serif;
+	color:#444;
+	margin: 0;
+}
+
+.img-responsive{
+	width:100%;
+}
+
+.intro{
+	height:100%;
+	background: url(https://s3.amazonaws.com/cannedhead.temp/img/3.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.intro .logo{
+	margin-top:10%;
+}
+
+.header {
+    background: url('http://weare2ndfloor.com/wp-content/themes/weare2ndfloor2013/assets/img/tile.png') #2A333B;
+	background-repeat: repeat;
+  	background-size: 437px auto; /*credits to weare2ndfloor for the cool background image*/
+	width: 100%;
+	height: 100%;
+}
+
+.header h2{
+	color:#FFF;
+	text-transform: uppercase;
+}
+
+.header-container {
+	display: table-cell;
+	vertical-align: middle;
+  	margin: auto 0;
+}
+
+.hero-unit{
+	color:#FFF;
+}
+
+.hero-unit h2 {
+
+	font-size: 30px;
+	color: #FFF;
+    font-weight: 500;
+    border: 6px solid #FFF;
+    display: inline-block;
+    padding: 30px 40px;
+    -webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+
+.wrapper {width: 50%;margin: 0 auto;}
+.module {margin: 40px;}
+p {line-height: 1.4;}
+h2 {margin: 16px auto;text-align: center;text-transform: uppercase;}
+a {text-decoration: none;color: #3498db;}
+
+
+.how-to{
+	height:100%;
+	font-family: "Lato", serif;
+	background: #0AC5F4 none repeat scroll 0% 0%;
+}
+
+#how-to{
+	color: #FFF;
+	font: 100 92px/1 "lato";
+	text-transform: uppercase;
+}
+
+#how-to li:nth-child(1) {
+    opacity: 0.3;
+}
+
+#how-to li:nth-child(2) {
+    opacity: 0.4;
+}
+
+#how-to li:nth-child(3) {
+    opacity: 0.5;
+}
+
+#how-to li:nth-child(4) {
+    opacity: 0.6;
+}
+
+#how-to li:nth-child(5) {
+    opacity: 0.7;
+}
+
+#how-to li:nth-child(6) {
+    opacity: 0.7;
+}
+
+#how-to li:nth-child(7) {
+    opacity: 0.8;
+}
+
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+	opacity:0;  /* make things invisible upon start */
+	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+	animation-duration:1s;
+}
+
+.fade-in.one {
+-webkit-animation-delay: 0.7s;
+-moz-animation-delay: 0.7s;
+animation-delay: 0.7s;
+}
+
+.fade-in.two {
+-webkit-animation-delay: 1.2s;
+-moz-animation-delay:1.2s;
+animation-delay: 1.2s;
+}
+
+.fade-in.three {
+-webkit-animation-delay: 1.6s;
+-moz-animation-delay: 1.6s;
+animation-delay: 1.6s;
+}
+
+.fade-in.four {
+-webkit-animation-delay: 2s;
+-moz-animation-delay: 2s;
+animation-delay: 2s;
+}
