@@ -86,6 +86,10 @@ app.get('/mongo-generator', function(req, res) {
 	res.render('mongo-generator'); 
 });
 
+app.get('/blue', function(req, res) {
+	res.render('landings/blue'); 
+});
+
 
 /*
 
