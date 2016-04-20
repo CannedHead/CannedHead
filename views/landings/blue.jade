@@ -22,10 +22,10 @@ html(lang="es")
   body
     .col-xs-12.no-padding.intro
       .col-xs-12.col-sm-7.no-padding.left-side
-        .col-xs-10.col-xs-offset-1.col-sm-5
+        .col-xs-10.col-xs-offset-1.col-sm-8.no-padding
           h1.col-xs-7.no-padding
             img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/logo_cannedhead.svg", alt="CannedHead")
-        
+        .col-xs-11.col-xs-offset-1.no-padding
           h2 
             | creamos
             br
@@ -33,7 +33,7 @@ html(lang="es")
             br
             | digitales
           p Desarrollo Web | Marketing Digital
-      .col-xs-10.col-xs-offset-1.col-sm-5.right-side
+      .col-xs-10.col-xs-offset-1.col-sm-5.col-sm-offset-0.right-side
         p.text-justify Si tienes curiosidad y quieres escuchar más sobre nuestros servicios, no dudes en hacer contacto. Las mejores relaciones se contruyen hablando cara a cara y nosotros estamos dispuestos a hacerlo :)
         form#contactForm.col-xs-12.no-padding(action="/landing", method="post")                      
           .form-group
@@ -48,26 +48,56 @@ html(lang="es")
             input.btn.btn-block.btn-blue(type="submit", value="CONTÁCTANOS")
     .col-xs-12
       h2.text-center Nuestros clientes
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/argeda.svg", alt="Argeda")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/casa_babylon.svg", alt="Casa Babylon")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/clinica_loyola.svg", alt="Clínica Loyola")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/diip.svg", alt="Diip")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/feeling_surf.svg", alt="FeelingSurf")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/fundacion_cepytin.svg", alt="Fundación Cepytin")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/gecar.svg", alt="Gecar Ingenieria")      
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/global.svg", alt="Global")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/jamming.svg", alt="Jamming Festival")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/klapcast.svg", alt="Klapcast")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/luis_carlos_tovar.svg", alt="Luis Carlos Tovar")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/motores_seguros.svg", alt="Motores Seguros")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/notaria_20.svg", alt="Notaria 20 del círculo de Medellin")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
-      img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
+      .row
+        .col-sm-1.col-sm-offset-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/aldea_de_san_marco.svg", alt="Aldea San Marco")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/argeda.svg", alt="Argeda")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/casa_babylon.svg", alt="Casa Babylon")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/clinica_loyola.svg", alt="Clínica Loyola")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/diip.svg", alt="Diip")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/feeling_surf.svg", alt="FeelingSurf")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/fundacion_cepytin.svg", alt="Fundación Cepytin")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/gecar.svg", alt="Gecar Ingenieria")      
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/global.svg", alt="Global")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/hotel_montserrat.svg", alt="Hotel Montserrat Plaza")
+      .row
+        .col-sm-1.col-sm-offset-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/jamming.svg", alt="Jamming Festival")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/klapcast.svg", alt="Klapcast")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/luis_carlos_tovar.svg", alt="Luis Carlos Tovar")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/motores_seguros.svg", alt="Motores Seguros")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/notaria_20.svg", alt="Notaria 20 del círculo de Medellin")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/notaria_26.svg", alt="Notaria 26 del círculo de Bogotá")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/optica_aguilar.svg", alt="Óptica Aguilar")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/peregrino_urbano.svg", alt="Peregrino Urbano")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/pillow.svg", alt="Pillow Education")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/renoboy.svg", alt="Renoboy")
+      .row
+        .col-sm-1.col-sm-offset-4
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/rustica.svg", alt="Rústika")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/sietepm.svg", alt="Sietepm")
+        .col-sm-1
+          img.img-responsive(src="https://s3-sa-east-1.amazonaws.com/cannedhead.canned/landing/smart_brix.svg", alt="Smartbrix")
+      
     <!-- jQuery & jQuery UI-->
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
    
