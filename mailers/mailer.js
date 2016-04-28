@@ -6,11 +6,11 @@ exports.contactus = function(name, email, message) {
             // Create a SMTP transport object
             var transport = nodemailer.createTransport("SMTP", {
 
-                host: "smtp.mandrillapp.com", // hostname
+                host: "smtp.postmarkapp.com", // hostname
                 port: 587, // port for secure SMTP
                 auth: {
-                    user: "app22836505@heroku.com",
-                    pass: "G1dcSBrkhCJIu8JDxIM1qA"
+                    user: "f7ef2575-9ae0-4e8f-a95f-ced99bb9d745",
+                    pass: "f7ef2575-9ae0-4e8f-a95f-ced99bb9d745"
                 }
 
             });
@@ -24,7 +24,7 @@ exports.contactus = function(name, email, message) {
                 from:' <contactus@cannedhead.com> ',
 
                 // Comma separated list of recipients
-                to: 'contact@cannedhead.com',
+                to: 'contact@cannedhead.com, julian@cannedhead.com',
 
                 // Subject of the message
                 subject: name+' '+email, //

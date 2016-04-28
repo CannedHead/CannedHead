@@ -11,6 +11,10 @@ app.get('/portfolio', function(req, res) {
 	res.render('portfolio'); 
 });
 
+app.get('/juandavid', function(req, res) {
+	res.render('landings/yellow'); 
+});
+
 app.post('/landing',function(req, res) {
 
 	if (req.body.user === undefined) {

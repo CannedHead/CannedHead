@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+/*HELPER*/
+
+.no-padding{
+	padding:0;
+}
+
+html,body{
+	font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4 , h5, h6{
+	font-weight: 700;
+}
+
+.header{
+	display: inline-block;
+	line-height: 2.7rem;
+}
+
+.header span{
+	color:#000;
+	background-color: #FFFE27;
+}
